@@ -1,0 +1,55 @@
+<%- include('partials/header', { title: title }) %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+            <div class="table-responsive p-5 mt-4">
+                <% if (user && user.length > 0) { %>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr class="table-dark-black" style="background-color: gray;">
+                                <th>id</th>
+                                <th>Fullname</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>password or google id</th>
+                                <th>status</th>
+                                <th>action</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <% user.forEach((row,index) => { %>
+                            <tr>
+                                <td><%= index %></td>
+                                <td><%= row.Name %></td>
+                                <td><%= row.phone %></td>
+                                <td><%= row.email %> <%= row.email_1 %></td>
+                                <td><%= row.password %> <%= row.googleId %></td>
+                                <td><%= row.status %></td>
+                                <td>
+                                    <a href="/adminedit/<%= row._id %>" class="text-sucess"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                                    
+                                    <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+
+                                    <a href="/block/<%= row._id %>" class="text-warning"><i class="fas fa-stop fa-lg mx-1"></i></a>
+
+                                </td>
+                                
+                            </tr>
+                          <% }); %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <h1 class="text_center text-secondary mt-5">no user found in the database</h1>
+                    <% } %>
+            </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("table").DataTable({
+            order:[0, 'desc']
+        })
+    })
+</script>
+<%- include('partials/footer') %>

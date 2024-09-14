@@ -1,0 +1,2969 @@
+<%- include('partials/header', { title: title }) %>
+
+  <!--second section-->
+  <section >
+    <br />
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedProduct=products.find(product=> product._id == productId && product.category === "mobile"); %>
+          <% if (selectedProduct) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedProduct.brand %>" data-price="<%= selectedProduct.price %>"
+              data-discountpercentage="<%= selectedProduct.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedProduct.imagePath1) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedProduct.imagePath2) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedProduct.imagePath3) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedProduct.imagePath4) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedProduct.imagePath5) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedProduct.imagePath6) { %>
+                          <img src="/uploads/<%= selectedProduct.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedProduct.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+               
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedProduct.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedProduct.price - (selectedProduct.price * selectedProduct.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedProduct.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedProduct.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    <p>
+                      <%= selectedProduct.Color %>
+                    </p>
+                    <img id="assured" width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedProduct._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedProduct.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedProduct.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedProduct.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedProduct.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedProduct.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedProduct._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedProduct.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedProduct.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedProduct.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedProduct.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedProduct.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>RAM - <%= selectedProduct.ram %>
+                      </li>
+                      <li>ROM - <%= selectedProduct.rom %>
+                      </li>
+                      <li>Battery - <%= selectedProduct.battery %>
+                      </li>
+                      <li>Display - <%= selectedProduct.display %>
+                      </li>
+                      <li>Processor - <%= selectedProduct.processor %>
+                      </li>
+                      <li>Camera - <%= selectedProduct.camera %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedProduct.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Color</span>
+                      <span class="spec-value">
+                        <%= selectedProduct.Color %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">Browse Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.BrowseType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SIM Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SimType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Hybrid Sim Slot</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.HybridsimSlot %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">touchscreen</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.touchscreen %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OTG Compatible</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.touchscreen %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OTG Compatible</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OTGCompatible %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Quick Charging</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.QuickCharging %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Sound Enhancements</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SoundEnhancements %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Display Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.DisplayFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Display Size</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.DisplaySize %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Resolution Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.ResolutionType %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Display Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.DisplayType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Display Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OtherDisplayFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Os & Processor Feature</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OsProcessorFeature %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Operation System</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OperationSystem %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Processor Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.ProcessorType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Operation Frequency</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OperationFrequency %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Memory & Storage Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.MemoryStorageFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Internal Storage</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.InternalStorage %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Ram</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.ram %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Camera Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.CameraFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera Available</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.PrimaryCameraAvailable %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.PrimaryCamera %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.PrimaryCameraFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Secondary Camera Available</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SecondaryCameraAvailable %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Secondary Camera</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SecondaryCamera %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HD Recording</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.HDRecording %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Full FD Recording</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.FullHDRecording %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Video Recording Resolution</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.VideoRecordingResolution %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Digital Zoom</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.DigitalZoom %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Frame Rate</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.FrameRate %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Dual Camera Lens</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.DualCameraLens %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Call Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.CallFeatures %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Speaker Phone</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SpeakerPhone %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Connectivity Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.ConnectivityFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Network Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.NetworkType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Supported Network</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SupportedNetwork %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Internet Connectivity</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.InternetConnectivity %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Pre-installed Browser</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.PreinstalledBrowser %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Micro USB Version</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.MicroUSBVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth Support</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.BluetoothSupport %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth Version</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.BluetoothVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Wi-fi Version</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.WifiVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Wi-Fi Hotspot</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.WiFiHotspot %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NFC</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.NFC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">GPS Support</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.GPSSupport %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Details</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OtherDetails %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SmartPhone</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SmartPhone %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SIM Size</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SIMSize %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SMS</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.SMS %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Voice Input</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.VoiceInput %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Graphic PPI</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.GraphicPPI %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Sensors</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Sensors %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.OtherFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">GPS Type</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.GPSType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Multimedia Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.MultimediaFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Video Formats</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.VideoFormats %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Battery & Power Features</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.BatteryPowerFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Battery Capacity</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.BatteryCapacity %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Dimensions</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Dimensions %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Width</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Width %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Height</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Height %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Depth</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Depth %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Weight %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Warranty</span>
+                        <span class="spec-value">
+                          <%= selectedProduct.Warranty %>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedProduct.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% } %>
+      </div>
+    </div>
+  </section>
+ <!--      WATCH  SECTION           --> 
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedwatch=products.find(product=> product._id == productId && product.category === "watch"); %>
+          <% if (selectedwatch) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedwatch.brand %>" data-price="<%= selectedwatch.price %>"
+              data-discountpercentage="<%= selectedwatch.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedwatch.imagePath1) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedwatch.imagePath2) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedwatch.imagePath3) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedwatch.imagePath4) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedwatch.imagePath5) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedwatch.imagePath6) { %>
+                          <img src="/uploads/<%= selectedwatch.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedwatch.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <p><h5 class="card-title"><%= selectedwatch.product %> </h5> <h6><%= selectedwatch.model %></h6></p>
+                    <div id="zoom-result"></div>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedwatch.price - (selectedwatch.price * selectedwatch.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedwatch.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedwatch.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+        
+                    <img width="80px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedwatch._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedwatch.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedwatch.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedwatch.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedwatch.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedwatch.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedwatch._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedwatch.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedwatch.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedwatch.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedwatch.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedwatch.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>Usage - <%= selectedwatch.Usage %>
+                      </li>
+                      <li>IdealFor - <%= selectedwatch.IdealFor %>
+                      </li>
+                      <li>Screen - <%= selectedwatch.touchscreenWatch %>
+                      </li>
+                      <li>Battery - <%= selectedwatch.BatteryLife %>
+                      </li>
+                      <li>CallFunction - <%= selectedwatch.CallFunction %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedwatch.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">DialColor</span>
+                      <span class="spec-value">
+                        <%= selectedwatch.DialColor %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">DialShape</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.DialShape %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">StrapColor</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.StrapColor %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">StrapMaterial</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.StrapMaterial %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Size</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Size %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">touchscreenWatch</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.touchscreenWatch %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WaterResistant</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.WaterResistant %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WaterResistanceDepth</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.WaterResistanceDepth %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Usage</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Usage %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DialMaterial</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.DialMaterial %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">IdealFor</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.IdealFor %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CompatibleOS</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.CompatibleOS %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Closure</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Closure %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Notification</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Notification %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NotificationType</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.NotificationType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Talktime</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Talktime %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">BatteryLife</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.BatteryLife %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">RechargeableBattery</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.RechargeableBattery %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ChargerType</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.ChargerType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">StandByTime</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.StandByTime %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CallFunction</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.CallFunction %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Bluetooth %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">MessagingSupport</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.MessagingSupport %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DisplayResolution</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.DisplayResolution %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">BacklightDisplay</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.BacklightDisplay %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ScratchResistant</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.ScratchResistant %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CalorieCount</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.CalorieCount %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">StepCount</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.StepCount %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HeartRateMonitor</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.HeartRateMonitor %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">OtherFitnessFeatures</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.OtherFitnessFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Calendar</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Calendar %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">AlarmClock</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.AlarmClock %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NumberofButtons</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.NumberofButtons %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Speaker</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Speaker %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Microphone</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Microphone %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">VoiceControl</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.VoiceControl %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Thickness</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Thickness %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Diameter</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Diameter %>
+                        </span>
+                      </div>
+                     
+                      <div class="spec-container">
+                        <span class="spec-label">Warranty</span>
+                        <span class="spec-value">
+                          <%= selectedwatch.Warranty %>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedwatch.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!--      earphone  SECTION           --> 
+
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedearphone=products.find(product=> product._id == productId && product.category === "earPhone"); %>
+          <% if (selectedearphone) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedearphone.brand %>" data-price="<%= selectedearphone.price %>"
+              data-discountpercentage="<%= selectedearphone.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedearphone.imagePath1) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedearphone.imagePath2) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedearphone.imagePath3) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedearphone.imagePath4) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedearphone.imagePath5) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedearphone.imagePath6) { %>
+                          <img src="/uploads/<%= selectedearphone.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedearphone.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedearphone.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedearphone.model %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedearphone.price - (selectedearphone.price * selectedearphone.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedearphone.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedearphone.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedearphone._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedearphone.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedearphone.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedearphone.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedearphone.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedearphone.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedearphone._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedearphone.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedearphone.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedearphone.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedearphone.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedearphone.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>BatteryLife - <%= selectedearphone.BatteryLifeEP %>
+                      </li>
+                      <li>Connectivity - <%= selectedearphone.ConnectivityEP %>
+                      </li>
+                      <li>CompatatibleDevices - <%= selectedearphone.CompatatibleDevicesEP %>
+                      </li>
+                      <li>WithMic - <%= selectedearphone.WithMicEP %>
+                      </li>
+                      <li>HeadphoneType - <%= selectedearphone.HeadphoneTypeEP %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedearphone.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Color</span>
+                      <span class="spec-value">
+                        <%= selectedearphone.Color %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">SalesPackage</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.SalesPackageEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HeadphoneDesign</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.HeadphoneDesignEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">AccessoriesIncludeded</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.AccessoriesIncludedEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CompatatibleDevices</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.CompatatibleDevicesEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NetQuantity</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.NetQuantityEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SweatProof</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.SweatProofEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DeepBass</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.DeepBassEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DesignFor</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.DesignForEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SystemRequirments</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.SystemRequirmentsEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Indicator</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.IndicatorEP %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Controls</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.ControlsEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HeadphoneDriveUnits</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.HeadphoneDriveUnitsEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WithMicrophone</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.WithMicrophoneEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WirelessRange</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.WirelessRangeEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">BluetoothVersion</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.BluetoothVersionEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">BluetoothRange</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.BluetoothRangeEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ChargingTime</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.ChargingTimeEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">PlayTime</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.PlayTimeEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Standbytime</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.StandbytimeEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Width</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.WidthEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Height</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.HeightEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Depth</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.DepthEP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">
+                          <%= selectedearphone.WeightEP %>
+                        </span>
+                      </div>
+                      
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedearphone.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!--      speaker  SECTION           --> 
+
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedspeaker=products.find(product=> product._id == productId && product.category === "speaker"); %>
+          <% if (selectedspeaker) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedspeaker.brand %>" data-price="<%= selectedspeaker.price %>"
+              data-discountpercentage="<%= selectedspeaker.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedspeaker.imagePath1) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedspeaker.imagePath2) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedspeaker.imagePath3) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedspeaker.imagePath4) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedspeaker.imagePath5) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedspeaker.imagePath6) { %>
+                          <img src="/uploads/<%= selectedspeaker.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedspeaker.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedspeaker.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedspeaker.model %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedspeaker.price - (selectedspeaker.price * selectedspeaker.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedspeaker.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedspeaker.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedspeaker._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedspeaker.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedspeaker.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedspeaker.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedspeaker.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedspeaker.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedspeaker._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedspeaker.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedspeaker.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedspeaker.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedspeaker.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedspeaker.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>Battery - <%= selectedspeaker.BatterySP %>
+                      </li>
+                      <li>USBPorts - <%= selectedspeaker.USBPortsSP %>
+                      </li>
+                      <li>BluetoothVersion - <%= selectedspeaker.BluetoothVersionSP %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedspeaker.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">ColorSP</span>
+                      <span class="spec-value">
+                        <%= selectedspeaker.ColorSP %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">Type</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.TypeSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.BluetoothSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">MemoryCardSlot</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.MemoryCardSlotSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Configuration</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.ConfigurationSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">PowerOutput</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.PowerOutputSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WiredWireless</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.WiredWirelessSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HeadphoneJack</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.HeadphoneJackSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CompatibleDevices</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.CompatibleDevicesSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Battery</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.BatterySP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">USBPorts</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.USBPortsSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">BluetoothVersion</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.BluetoothVersionSP %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">BatteryLife</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.BatteryLifeSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">WirelessRange</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.WirelessRangeSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Width</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.WidthSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Height</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.HeightSP %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Depth</span>
+                        <span class="spec-value">
+                          <%= selectedspeaker.DepthSP %>
+                        </span>
+                      </div>
+                      
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedspeaker.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!--      charger  SECTION           --> 
+
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedcharger=products.find(product=> product._id == productId && product.category === "charger"); %>
+          <% if (selectedcharger) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedcharger.brand %>" data-price="<%= selectedcharger.price %>"
+              data-discountpercentage="<%= selectedcharger.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedcharger.imagePath1) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedcharger.imagePath2) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedcharger.imagePath3) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedcharger.imagePath4) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedcharger.imagePath5) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedcharger.imagePath6) { %>
+                          <img src="/uploads/<%= selectedcharger.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedcharger.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedcharger.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedcharger.model %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedcharger.price - (selectedcharger.price * selectedcharger.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedcharger.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedcharger.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedcharger._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedcharger.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedcharger.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedcharger.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedcharger.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedcharger.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedcharger._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedcharger.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedcharger.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedcharger.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedcharger.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedcharger.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>ConnectorType- <%= selectedcharger.ConnectorTypeC %>
+                      </li>
+                      <li>NumberOfChargerPins - <%= selectedcharger.NumberOfChargerPinsC %>
+                      </li>
+                      <li>LEDIndicator - <%= selectedcharger.LEDIndicatorC %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedcharger.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Color</span>
+                      <span class="spec-value">
+                        <%= selectedcharger.Color %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">OutputInterface</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.OutputInterfaceC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">LEDIndicator</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.LEDIndicatorC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Display</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.DisplayC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ConnectorType</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.ConnectorTypeC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NumberOfDevice</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.NumberOfDeviceBatteriesChangedC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DesignedFor</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.DesignedForC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NumberOfChargerPins</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.NumberOfChargerPinsC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Width x Height x Depth</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.WidthxHeightxDepthC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.WeightC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OtherFeatures</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.OtherFeaturesC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CableType</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.CableTypeC %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Display PowerInput</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.PowerInputC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">PowerSource</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.PowerSourceC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OutputCurrent</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.OutputCurrentC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SecondarySlotOutput</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.SecondarySlotOutputC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OutputWattage</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.OutputWattageC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OtherPowerFeatures</span>
+                        <span class="spec-value">
+                          <%= selectedcharger.OtherPowerFeaturesC %>
+                        </span>
+                      </div>
+                     
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedcharger.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <% } %>
+      </div>
+    </div>
+  </section>
+  <!--      storagedevice  SECTION           --> 
+
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedstoragedevice=products.find(product=> product._id == productId && product.category === "storagedevice"); %>
+          <% if (selectedstoragedevice) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedstoragedevice.brand %>" data-price="<%= selectedstoragedevice.price %>"
+              data-discountpercentage="<%= selectedstoragedevice.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedstoragedevice.imagePath1) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedstoragedevice.imagePath2) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedstoragedevice.imagePath3) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedstoragedevice.imagePath4) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedstoragedevice.imagePath5) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedstoragedevice.imagePath6) { %>
+                          <img src="/uploads/<%= selectedstoragedevice.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedstoragedevice.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedstoragedevice.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedstoragedevice.model %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedstoragedevice.price - (selectedstoragedevice.price * selectedstoragedevice.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedstoragedevice.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedstoragedevice.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedstoragedevice._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedstoragedevice.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedstoragedevice.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedstoragedevice.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedstoragedevice.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedstoragedevice.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedstoragedevice._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedstoragedevice.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedstoragedevice.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedstoragedevice.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedstoragedevice.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedstoragedevice.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>RamSize - <%= selectedstoragedevice.RamSizeSD %>
+                      </li>
+                      <li>StorageCapacity - <%= selectedstoragedevice.MemoryStorageCapacitySD %>
+                      </li>
+                      <li>CampatibleDevices - <%= selectedstoragedevice.CampatibleDevicesSD %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedstoragedevice.ModelNumberSD %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Weight</span>
+                      <span class="spec-value">
+                        <%= selectedstoragedevice.WeightSD %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">RamSize</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.RamSizeSD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">StorageCapacity</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.MemoryStorageCapacitySD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">FlashMemoryType</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.FlashMemoryTypeSD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">DigitalStorageCapacity</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.DigitalStorageCapacitySD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HardWareInterface</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.HardWareInterfaceSD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">CampatibleDevices</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.CampatibleDevicesSD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SpecialFeature</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.SpecialFeatureSD %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Sound Enhancements</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.SoundEnhancements %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ItemWeight</span>
+                        <span class="spec-value">
+                          <%= selectedstoragedevice.ItemWeightSD %>
+                        </span>
+                      </div>
+                     
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedstoragedevice.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!--      powerbank  SECTION           --> 
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedpowerbank=products.find(product=> product._id == productId && product.category === "powerbank"); %>
+          <% if (selectedpowerbank) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedpowerbank.brand %>" data-price="<%= selectedpowerbank.price %>"
+              data-discountpercentage="<%= selectedpowerbank.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedpowerbank.imagePath1) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedpowerbank.imagePath2) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedpowerbank.imagePath3) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedpowerbank.imagePath4) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedpowerbank.imagePath5) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedpowerbank.imagePath6) { %>
+                          <img src="/uploads/<%= selectedpowerbank.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedpowerbank.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                    
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedpowerbank.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedpowerbank.color %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedpowerbank.price - (selectedpowerbank.price * selectedpowerbank.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedpowerbank.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedpowerbank.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedpowerbank._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedpowerbank.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedpowerbank.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedpowerbank.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedpowerbank.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedpowerbank.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedpowerbank._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedpowerbank.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedpowerbank.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedpowerbank.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedpowerbank.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedpowerbank.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>Capacity - <%= selectedpowerbank.CapacityPB %>
+                      </li>
+                      <li>NumberofOutputPorts - <%= selectedpowerbank.NumberofOutputPortsPB %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedpowerbank.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Color</span>
+                      <span class="spec-value">
+                        <%= selectedpowerbank.Color %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">PowerSource</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.PowerSourcePB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Capacity</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.CapacityPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NumberofOutputPorts</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.NumberofOutputPortsPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">ChargingCableIncluded</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.ChargingCableIncludedPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">PowerSupply</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.PowerSupplyPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OutputPower</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.OutputPowerPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OtherFeatures</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.OtherFeaturesPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">width</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.widthPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Depth</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.DepthPB %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">
+                          <%= selectedpowerbank.WeightPB %>
+                        </span>
+                      </div>
+                      
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedpowerbank.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!--      smartpoint  SECTION           --> 
+  <section >
+    
+    <div id="mobiledetail">
+      <div class="mb-3">
+        <% const selectedsmartpoint=products.find(product=> product._id == productId && product.category === "smartpoint"); %>
+          <% if (selectedsmartpoint) { %>
+            <div class="card margin-top" style="width: auto; border: 1px solid gainsboro"
+              data-brand="<%= selectedsmartpoint.brand %>" data-price="<%= selectedsmartpoint.price %>"
+              data-discountpercentage="<%= selectedsmartpoint.discountPercentage %>">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <div class="product-gallery">
+                    <div class="thumbnails" id="gallery">
+                      <% if (selectedsmartpoint.imagePath1) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath1 %>" alt="Image 1" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedsmartpoint.imagePath2) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath2 %>" alt="Image 2" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedsmartpoint.imagePath3) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath3 %>" alt="Image 3" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedsmartpoint.imagePath4) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath4 %>" alt="Image 4" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedsmartpoint.imagePath5) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath5 %>" alt="Image 5" onclick="changeImage(this)" >
+                      <% } %>
+                      
+                      <% if (selectedsmartpoint.imagePath6) { %>
+                          <img src="/uploads/<%= selectedsmartpoint.imagePath6 %>" alt="Image 6" onclick="changeImage(this)" >
+                      <% } %>
+                  </div>
+                  
+                    <div class="main-image">
+                        <img id="main-display" src="/uploads/<%= selectedsmartpoint.imagePath1 %>" alt="Main Image">
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= selectedsmartpoint.product %> </h5>
+                    <div id="zoom-result"></div>
+                    <p>
+                      <%= selectedsmartpoint.model %>
+                    </p>
+                    <div class="col-md-3">
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"> Price: <%= Math.floor(selectedsmartpoint.price - (selectedsmartpoint.price * selectedsmartpoint.discountPercentage / 100)) %> </p>                  
+                      <p class="discounted-price" style="font-size: larger; font-weight: 500"></p>
+                      <p class="discount-amount" style="display: none">You Save: ₹</p>
+                      <h6>
+                        <span class="original-price" style="text-decoration: line-through; color: green">MRP:<%=
+                            selectedsmartpoint.price %></span>
+                        <span><small style="color: red; text-decoration: none"><%= selectedsmartpoint.discountPercentage %>% off</small></span>
+                      </h6>
+                    </div>
+                    
+                    <img width="100px" height="50px" src="/public/category/b assured logo (3) (1).png" alt="" />
+                    <br />
+                    <div style="display: flex; gap: 10px;">
+                      <form action="/cart" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedsmartpoint._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedsmartpoint.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedsmartpoint.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedsmartpoint.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedsmartpoint.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedsmartpoint.imagePath1 %>">
+                        <button id="buy" style="text-decoration: none; color: white; background-color: orange">ADD TO CART</button>
+                      </form>
+                    
+                      <form action="/buy" method="POST" style="display: inline;">
+                        <input type="hidden" name="product" value="<%= selectedsmartpoint._id %>">
+                        <input type="hidden" name="model" placeholder="Model" value="<%= selectedsmartpoint.product %>">
+                        <input type="hidden" name="price" placeholder="Price" value="<%= selectedsmartpoint.price %>">
+                        <input type="hidden" name="Color" placeholder="Color" value="<%= selectedsmartpoint.Color %>">
+                        <input type="hidden" name="fullname" placeholder="Color" value="<%= fullname %>">
+                        <input type="hidden" name="address" placeholder="fullname" value="<%= address.address %>">
+                        <input type="hidden" name="city" placeholder="fullname" value="<%= city %>">
+                        <input type="hidden" name="state" placeholder="fullname" value="<%= state %>">
+                        <input type="hidden" name="zip" placeholder="fullname" value="<%= zip %>">
+                        <input type="hidden" name="phonenumber" placeholder="fullname" value="<%= phonenumber %>">
+                        <input type="hidden" name="homework" placeholder="fullname" value="<%= homework %>">
+                        <input type="hidden" name="alternatenumber" placeholder="fullname" value="<%= alternatenumber %>">
+                        <input type="hidden" name="discountPercentage" placeholder="Discount Percentage" value="<%= selectedsmartpoint.discountPercentage %>">
+                        <input type="hidden" name="imagePath1" value="<%= selectedsmartpoint.imagePath1 %>">
+                        <button id="buy" style="color: white; background-color: rgb(65, 65, 191);">BUY NOW</button>
+                      </form>
+                    </div>
+                    
+                    <br />
+                    <label for="" style="color: rgb(52, 52, 176)"><strong>HIGHLIGHT</strong></label>
+                    <ul style="color: gray; list-style-type: none">
+                      <li>RAM - <%= selectedsmartpoint.ram %>
+                      </li>
+                      <li>ROM - <%= selectedsmartpoint.rom %>
+                      </li>
+                      <li>Battery - <%= selectedsmartpoint.battery %>
+                      </li>
+                      <li>Display - <%= selectedsmartpoint.display %>
+                      </li>
+                      <li>Processor - <%= selectedsmartpoint.processor %>
+                      </li>
+                      <li>Camera - <%= selectedsmartpoint.camera %>
+                      </li>
+                    </ul>
+                    <div id="cod" class="row-md-3 d-flex flex-row gap-2">
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/EMIAvailableGray.png" alt="" />
+                        <p>EMI Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/CODAvailableGray.png" alt="" />
+                        <p>COD Available</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/10DaysEasyReturnGray.png" alt="" />
+                        <p>10 Days Easy Return</p>
+                      </div>
+                      <div class="cod-item">
+                        <img width="50px" src="/public/category/6MONTH.png" alt="" />
+                        <p>1 Year Warranty</p>
+                      </div>
+                    </div>
+                    <br />
+                    <label style="color: gray; font-size: larger"><strong>Specifications</strong></label>
+                    <div class="spec-container">
+                      <span class="spec-label">GENERAL</span>
+                      <span class="spec-value"></span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Model Name</span>
+                      <span class="spec-value">
+                        <%= selectedsmartpoint.model %>
+                      </span>
+                    </div>
+                    <div class="spec-container">
+                      <span class="spec-label">Color</span>
+                      <span class="spec-value">
+                        <%= selectedsmartpoint.Color %>
+                      </span>
+                    </div>
+                    <div class="more-content">
+                      <div class="spec-container">
+                        <span class="spec-label">Browse Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.BrowseType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SIM Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SimType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Hybrid Sim Slot</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.HybridsimSlot %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">touchscreen</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.touchscreen %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OTG Compatible</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.touchscreen %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">OTG Compatible</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OTGCompatible %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Quick Charging</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.QuickCharging %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Sound Enhancements</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SoundEnhancements %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Display Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.DisplayFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Display Size</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.DisplaySize %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Resolution Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.ResolutionType %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Display Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.DisplayType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Display Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OtherDisplayFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Os & Processor Feature</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OsProcessorFeature %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Operation System</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OperationSystem %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Processor Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.ProcessorType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Operation Frequency</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OperationFrequency %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Memory & Storage Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.MemoryStorageFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Internal Storage</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.InternalStorage %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Ram</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.ram %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Camera Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.CameraFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera Available</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.PrimaryCameraAvailable %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.PrimaryCamera %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Primary Camera Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.PrimaryCameraFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Secondary Camera Available</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SecondaryCameraAvailable %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Secondary Camera</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SecondaryCamera %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">HD Recording</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.HDRecording %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Full FD Recording</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.FullHDRecording %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">Video Recording Resolution</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.VideoRecordingResolution %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Digital Zoom</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.DigitalZoom %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Frame Rate</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.FrameRate %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Dual Camera Lens</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.DualCameraLens %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Call Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.CallFeatures %>
+                        </span>
+                      </div>
+
+                      <div class="spec-container">
+                        <span class="spec-label">smartpoint Phone</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.smartpointPhone %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Connectivity Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.ConnectivityFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Network Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.NetworkType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Supported Network</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SupportedNetwork %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Internet Connectivity</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.InternetConnectivity %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Pre-installed Browser</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.PreinstalledBrowser %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Micro USB Version</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.MicroUSBVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth Support</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.BluetoothSupport %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Bluetooth Version</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.BluetoothVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Wi-fi Version</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.WifiVersion %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Wi-Fi Hotspot</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.WiFiHotspot %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">NFC</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.NFC %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">GPS Support</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.GPSSupport %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Details</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OtherDetails %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SmartPhone</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SmartPhone %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SIM Size</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SIMSize %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">SMS</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.SMS %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Voice Input</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.VoiceInput %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Graphic PPI</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.GraphicPPI %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Sensors</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Sensors %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Other Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.OtherFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">GPS Type</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.GPSType %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Multimedia Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.MultimediaFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Video Formats</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.VideoFormats %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Battery & Power Features</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.BatteryPowerFeatures %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Battery Capacity</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.BatteryCapacity %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Dimensions</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Dimensions %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Width</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Width %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Height</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Height %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Depth</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Depth %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Weight %>
+                        </span>
+                      </div>
+                      <div class="spec-container">
+                        <span class="spec-label">Warranty</span>
+                        <span class="spec-value">
+                          <%= selectedsmartpoint.Warranty %>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="show-more-button" onclick="toggleContent()">Show More</span>
+                    <span class="show-less-button" onclick="toggleContent()" style="display: none">Show Less</span>
+                    <p>
+                      <%= selectedsmartpoint.description %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% } %>
+      </div>
+    </div>
+  </section>
+  <%- include('partials/footer') %>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const brands = [
+          "Apple",
+          "Redmi",
+          "Samsung",
+          "Google",
+          "OnePlus",
+          "Motorola",
+          "Nothing",
+          "Honor",
+          "Realme",
+          "Vivo",
+          "Sony",
+          "Oppo",
+        ];
+        const checkboxes = document.querySelectorAll(
+          '#brand input[type="checkbox"]'
+        );
+
+        checkboxes.forEach((checkbox) => {
+          if (brands.includes(checkbox.value)) {
+            checkbox.checked = false;
+          }
+        });
+
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", filterProducts);
+        });
+
+        function filterProducts() {
+          const selectedBrands = Array.from(
+            document.querySelectorAll('#brand input[type="checkbox"]:checked')
+          ).map((cb) => cb.value);
+          document.querySelectorAll("#products .card").forEach((card) => {
+            const cardBrand = card.getAttribute("data-brand");
+            const price = parseFloat(card.getAttribute("data-price"));
+            const minPrice = parseFloat(document.getElementById("min-price").value);
+            const maxPrice = parseFloat(document.getElementById("max-price").value);
+            if (
+              (selectedBrands.length === 0 || selectedBrands.includes(cardBrand)) &&
+              price >= minPrice &&
+              price <= maxPrice
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
+
+        function percentagePrice(price, discountPercentage) {
+    const discountAmount = (price * discountPercentage) / 100;
+    const discountPrice = price - discountAmount;
+    return { discountPrice, discountAmount };
+}
+
+function formatWithCommas(number) {
+    // Ensure number is a number and format it with commas
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function updateDiscountedPrices() {
+    const productElements = document.querySelectorAll(".card");
+    productElements.forEach((element) => {
+        // Retrieve price and discount percentage from data attributes
+        const price = parseFloat(element.dataset.price);
+        const discountPercentage = parseFloat(element.dataset.discountpercentage);
+
+        // Check if values are valid numbers
+        if (!isNaN(price) && !isNaN(discountPercentage)) {
+            const { discountPrice, discountAmount } = percentagePrice(price, discountPercentage);
+
+            // Format prices and update the inner text
+            element.querySelector(".discounted-price").innerText = "₹" + formatWithCommas(discountPrice.toFixed(0));
+            element.querySelector(".discount-amount").innerText = "₹" + formatWithCommas(discountAmount.toFixed(0));
+            element.querySelector(".original-price").innerText = "₹" + formatWithCommas(price.toFixed(0));
+        }
+    });
+}
+
+// Call the function to update prices
+updateDiscountedPrices();
+
+
+        document
+          .getElementById("price-filter")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            filterProducts();
+          });
+
+        updateDiscountedPrices();
+      });
+    </script>
+    <script>
+      function toggleContent() {
+        var moreContent = document.querySelector(".more-content");
+        var showMoreButton = document.querySelector(".show-more-button");
+        var showLessButton = document.querySelector(".show-less-button");
+
+        if (moreContent.style.display === "none") {
+          moreContent.style.display = "block";
+          showMoreButton.style.display = "none";
+          showLessButton.style.display = "inline";
+        } else {
+          moreContent.style.display = "none";
+          showMoreButton.style.display = "inline";
+          showLessButton.style.display = "none";
+        }
+      }
+    </script>
+<!-- image script-->
+<script>
+  function changeImage(element) {
+    // Update the main image
+    document.getElementById('main-display').src = element.src;
+
+    // Remove 'selected' class from all thumbnails
+    var thumbnails = document.querySelectorAll('.thumbnails img');
+    thumbnails.forEach(function(thumbnail) {
+        thumbnail.classList.remove('selected');
+    });
+
+    // Add 'selected' class to the clicked thumbnail
+    element.classList.add('selected');
+}
+
+</script>
+
+<!--zoom image-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.getElementById('main-display');
+    const zoomResult = document.getElementById('zoom-result');
+
+    mainImage.addEventListener('mousemove', function(e) {
+        zoomResult.style.display = "block";
+
+        const pos = getCursorPos(e);
+        const x = pos.x / mainImage.width * 100;
+        const y = pos.y / mainImage.height * 100;
+
+        // Set background image and position for the zoom result box
+        zoomResult.style.backgroundImage = `url('${mainImage.src}')`;
+        zoomResult.style.backgroundPosition = `${x}% ${y}%`;
+    });
+
+    mainImage.addEventListener('mouseleave', function() {
+        zoomResult.style.display = "none";
+    });
+
+    function getCursorPos(e) {
+        const rect = mainImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        return { x: x, y: y };
+    }
+});
+
+</script>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+</head>
+<body>
+    <section>
+      <div class="container">
+        <h1>add new prodcut</h1>
+        <button style="float: right;"><a href="/">home</a></button>
+        <form action="/add-watch" method="post" id="add-form" enctype="multipart/form-data">
+            <div id="div3" class="form-group">
+                <label id="div3"  for="name">product:</label>
+                <input  type="text"  class="form-control" id="product"  name="product" placeholder="product" required minlength="3">
+              </div>
+              <div id="div3" class="form-group">
+               <label id="div3" for="password">model:</label>
+                <input id="div3" type="text" class="form-control" id="model" name="model" placeholder="model" required minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">price:</label>
+                 <input id="div3" type="text" class="form-control" id="price" name="price" placeholder="price" required minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                <label id="div3" for="password">discountPercentage:</label>
+                 <input id="div3" type="text" class="form-control" id="discountPercentage" name="discountPercentage" placeholder="%" required minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                <label id="div3" for="password">image:</label>
+                 <input id="div3" type="file" class="form-control" id="imagePath" name="imagePath" placeholder="imagePath" required minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                <label id="div3" for="password">DialColor:</label>
+                 <input id="div3" type="text" class="form-control" id="DialColor" name="DialColor" placeholder="DialColor"  minlength="1">
+                 </div>
+                 <div id="div3" class="form-group">
+                 <label id="div3" for="password">DialShape:</label>
+                 <input id="div3" type="text" class="form-control" id="DialShape" name="DialShape" placeholder="DialShape"  minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                 <label id="div3" for="password">StrapMaterial:</label>
+                 <input id="div3" type="text" class="form-control" id="StrapMaterial" name="StrapMaterial" placeholder="StrapMaterial"  minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                 <label id="div3" for="password">Size:</label>
+                 <input id="div3" type="text" class="form-control" id="Size" name="Size" placeholder="Size"  minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                 <label id="div3" for="password">WaterResistant:</label>
+                 <input id="div3" type="text" class="form-control" id="WaterResistant" name="WaterResistant" placeholder="WaterResistant"  minlength="1">
+               </div>
+              <div id="div3" class="form-group">
+                 <label id="div3" for="password">WaterResistanceDiameter:</label>
+                 <input id="div3" type="text" class="form-control" id="WaterResistanceDiameter" name="WaterResistanceDiameter" placeholder="WaterResistanceDiameter"  minlength="1">
+               </div>
+               <div id="div3" class="form-group">
+                <label id="div3" for="password">Color:</label>
+                <input id="div3" type="text" class="form-control" id="Color" name="Color" placeholder="Color"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Usage:</label>
+                <input id="div3" type="text" class="form-control" id="Usage" name="Usage" placeholder="Usage"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">DialMaterial:</label>
+                <input id="div3" type="text" class="form-control" id="DialMaterial" name="DialMaterial" placeholder="DialMaterial"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">IdealFor:</label>
+                <input id="div3" type="text" class="form-control" id="IdealFor" name="IdealFor" placeholder="IdealFor"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">touchscreen:</label>
+                <input id="div3" type="text" class="form-control" id="touchscreen" name="touchscreen" placeholder="touchscreen"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CompatibleOS:</label>
+                <input id="div3" type="text" class="form-control" id="CompatibleOS" name="CompatibleOS" placeholder="CompatibleOS"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Closure:</label>
+                <input id="div3" type="text" class="form-control" id="Closure" name="Closure" placeholder="Closure"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Notification:</label>
+                <input id="div3" type="text" class="form-control" id="Notification" name="Notification" placeholder="Notification"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">NotificationType:</label>
+                <input id="div3" type="text" class="form-control" id="NotificationType" name="NotificationType" placeholder="NotificationType"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Talktime:</label>
+                <input id="div3" type="text" class="form-control" id="Talktime" name="Talktime" placeholder="Talktime"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">BatteryLife:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryLife" name="BatteryLife" placeholder="BatteryLife"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">RechargeableBattery:</label>
+                <input id="div3" type="text" class="form-control" id="RechargeableBattery" name="RechargeableBattery" placeholder="RechargeableBattery"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">ChargerType:</label>
+                <input id="div3" type="text" class="form-control" id="ChargerType" name="ChargerType" placeholder="ChargerType"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">OsWaterResistantFeature:</label>
+                <input id="div3" type="text" class="form-control" id="OsWaterResistantFeature" name="OsWaterResistantFeature" placeholder="OsWaterResistantFeature"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">StandByTime:</label>
+                <input id="div3" type="text" class="form-control" id="StandByTime" name="StandByTime" placeholder="StandByTime"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CallFunction:</label>
+                <input id="div3" type="text" class="form-control" id="CallFunction" name="CallFunction" placeholder="CallFunction"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Bluetooth:</label>
+                <input id="div3" type="text" class="form-control" id="Bluetooth" name="Bluetooth" placeholder="Bluetooth"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">MessagingSupport:</label>
+                <input id="div3" type="text" class="form-control" id="MessagingSupport" name="MessagingSupport" placeholder="MessagingSupport"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">BluetoothVersion:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothVersion" name="BluetoothVersion" placeholder="BluetoothVersion"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CallFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="CallFeatures" name="CallFeatures" placeholder="CallFeatures"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">DisplaySize:</label>
+                <input id="div3" type="text" class="form-control" id="DisplaySize" name="DisplaySize" placeholder="DisplaySize"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">DisplayResolution:</label>
+                <input id="div3" type="text" class="form-control" id="DisplayResolution" name="DisplayResolution" placeholder="DisplayResolution"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">DisplayType:</label>
+                <input id="div3" type="text" class="form-control" id="DisplayType" name="DisplayType" placeholder="DisplayType"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">BacklightDisplay:</label>
+                <input id="div3" type="text" class="form-control" id="BacklightDisplay" name="BacklightDisplay" placeholder="BacklightDisplay"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">ScratchResistant:</label>
+                <input id="div3" type="text" class="form-control" id="ScratchResistant" name="ScratchResistant" placeholder="ScratchResistant"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CalorieCount:</label>
+                <input id="div3" type="text" class="form-control" id="CalorieCount" name="CalorieCount" placeholder="CalorieCount"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">StepCount:</label>
+                <input id="div3" type="text" class="form-control" id="StepCount" name="StepCount" placeholder="StepCount"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">HeartRateMonitor:</label>
+                <input id="div3" type="text" class="form-control" id="HeartRateMonitor" name="HeartRateMonitor" placeholder="HeartRateMonitor"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">OtherFitnessFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="OtherFitnessFeatures" name="OtherFitnessFeatures" placeholder="OtherFitnessFeatures"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Calendar:</label>
+                <input id="div3" type="text" class="form-control" id="Calendar" name="Calendar" placeholder="Calendar"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Sensors:</label>
+                <input id="div3" type="text" class="form-control" id="Sensors" name="Sensors" placeholder="Sensors"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">AlarmClock:</label>
+                <input id="div3" type="text" class="form-control" id="AlarmClock" name="AlarmClock" placeholder="AlarmClock"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CallFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="CallFeatures" name="CallFeatures" placeholder="CallFeatures"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">NumberofButtons:</label>
+                <input id="div3" type="text" class="form-control" id="NumberofButtons" name="NumberofButtons" placeholder="NumberofButtons"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Speaker:</label>
+                <input id="div3" type="text" class="form-control" id="Speaker" name="Speaker" placeholder="Speaker"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Microphone:</label>
+                <input id="div3" type="text" class="form-control" id="Microphone" name="Microphone" placeholder="Microphone"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">CallFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="CallFeatures" name="CallFeatures" placeholder="CallFeatures"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">VoiceControl:</label>
+                <input id="div3" type="text" class="form-control" id="VoiceControl" name="VoiceControl" placeholder="VoiceControl"  minlength="1">
+              </div>
+              
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Width:</label>
+                <input id="div3" type="text" class="form-control" id="Width" name="Width" placeholder="Width"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Height:</label>
+                <input id="div3" type="text" class="form-control" id="Height" name="Height" placeholder="Height"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Diameter:</label>
+                <input id="div3" type="text" class="form-control" id="Diameter" name="Diameter" placeholder="Diameter"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Weight:</label>
+                <input id="div3" type="text" class="form-control" id="Weight" name="Weight" placeholder="Weight"  minlength="1">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">Warranty:</label>
+                <input id="div3" type="text" class="form-control" id="Warranty" name="Warranty" placeholder="Warranty"  minlength="1">
+              </div>
+               <label for="category">Category:</label>
+               <select id="category" name="category" required>
+                      <option value="mobile">mobile</option>
+                      <option value="gadget">gadget</option>
+                      <option value="watch">watch</option>
+                      <option value="earPhone">earPhone</option>
+                      <option value="speaker">speaker</option>
+                      <option value="charger">charger</option>
+                      <option value="storagedevice">storagedevice</option>
+                      <option value="powerbank">powerbank</option>
+                      <option value="smartpoint">smartpoint</option>
+                      <option value="SUPER VALUE MOBILES">SUPER VALUE MOBILES</option>
+              </select><br>
+              <label for="brand">Brand:</label>
+               <select id="brand" name="brand" required>
+                      <option value="Apple">Apple</option>
+                      <option value="Redmi">Redmi</option>
+                      <option value="Google">Google</option>
+                      <option value="OnePlus">OnePlus</option>
+                      <option value="Motorola">Motorola</option>
+                      <option value="Nothing">Nothing</option>
+                      <option value="Honor">Honor</option>
+                      <option value="Realme">Realme</option>
+                      <option value="Vivo">Vivo</option>
+                      <option value="Sony">Sony</option>
+                      <option value="Oppo">Oppo</option>
+                      <option value="Play">Play</option>
+                      <option value="Og">Og</option>
+                      <option value="Just Coreseca">Just Coreseca</option>
+                      <option value="Pebble">Pebble</option>
+                      <option value="boat">boat</option>
+                      <option value="boult">boult</option>
+                      <option value="SUPER VALUE MOBILES">SUPER VALUE MOBILES</option>
+              </select><br>
+              <button type="submit" class="btn btn-primary" id="log" action="#">add product</button>
+        </div>
+        </form>
+    </section>
+</body>
+</html>
+

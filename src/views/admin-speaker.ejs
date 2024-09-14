@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>admin speaker</title>
+    <link rel="icon" href="https://img.icons8.com/nolan/30/shopee.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.3/datatables.min.css" rel="stylesheet">
+    
+   <!-- <link rel="stylesheet" href="/public/home.css">-->
+  </head>
+  <body>
+<style>
+  /*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #545869;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #e1e1ec;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #585e7a;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #50556e;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+@keyframes colorChange {
+            0% {
+                color: gray; /* Red */
+            }
+            25% {
+                color: darkgrey; /* Magenta */
+            }
+        }
+
+        .animated-text {
+            font-size: 24px;
+            font-weight: bold;
+            animation: colorChange 3s infinite;
+        }
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <img width="100px" height="100px" class="ms-5" src="/public/Preview.png" alt="">
+      </div>
+
+      <ul class="list-unstyled components">
+        <p class="animated-text">Admin Panel</p>
+          <li class="nav-item active">
+            <a href="#homeSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Product List</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li class="nav-item">
+                    <a href="/admin-mobile" class="nav-link">Mobile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-watch" class="nav-link">Watch</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-earphone" class="nav-link">EarPhone</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-speaker" class="nav-link">Speaker</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-charger" class="nav-link">Charger</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-storagedevice" class="nav-link">Storage Device</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-powerbank" class="nav-link">Power Bank</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin-smartpoint" class="nav-link">Smart Point</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item active">
+            <a href="#pageSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Product Add</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li class="nav-item">
+                    <a href="/add" class="nav-link">Add New User</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_product" class="nav-link">Add New Product</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/admin_product" class="nav-link">Full Product</a>
+              </li>
+                
+            </ul>
+        </li>
+        <li class="nav-item active">
+          <a href="#dataSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Data</a>
+          <ul class="collapse list-unstyled" id="dataSubmenu">
+              <li class="nav-item">
+                  <a href="/user-address" class="nav-link">User Address Details</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/admin-cart" class="nav-link">Cart Products</a>
+              </li>         
+              <li class="nav-item">
+                  <a href="/admin-buy" class="nav-link">Temporary Buy</a>
+              </li>         
+          </ul>
+      </li>
+      
+          <li>
+            <a href="/admin-favourite">Favourite</a>
+        </li>
+          <li>
+              <a href="/admin-cart">Cart Products</a>
+          </li>
+          <li>
+              <a href="/admin-checkout">Checkout</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+          <li>
+              <a href="/admin-logout" class="article">Log Out</a>
+          </li>
+      </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+              <button type="button" id="sidebarCollapse" class="btn btn-info">
+                  <i class="fas fa-align-left"></i>
+                  
+              </button>
+              <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-align-justify"></i>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ms-auto">
+                  <li class="nav-item me-2">
+                    <button class="btn btn-dark btn-sm">
+                        <a class="nav-link text-white" href="/" style="text-decoration: none;">Home</a>
+                    </button>
+                </li> 
+                    <li class="nav-item me-2">
+                        <button class="btn btn-dark btn-sm">
+                            <a class="nav-link text-white" href="/admin_product" style="text-decoration: none;">+ Product</a>
+                        </button>
+                    </li>  
+                    <li class="nav-item">
+                        <button class="btn btn-danger btn-sm">
+                            <a class="nav-link text-white" href="/admin-logout" style="text-decoration: none;">Logout</a>
+                        </button>
+                    </li>                    
+                </ul>
+            </div>
+          </div>
+      </nav> 
+            <div class="table-responsive p-5">
+                <% if (products && products.length > 0) { %>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="table-dark-black" style="background-color: gray;">
+                                <th>id</th>
+                                <th>image</th>
+                                <th>product</th>
+                                <th>model</th>
+                                <th>BluetoothSP</th>
+                                <th>MemoryCardSlotSP</th>
+                                <th>ConfigurationSP</th>
+                                <th>PowerOutputSP</th>
+                                <th>category</th>
+                                <th>brand</th>
+                                <th>price</th>
+                                <th>discount</th>
+                                <th>action</th>
+                                <th>ColorSP</th>
+                                <th>TypeSP</th>
+                                <th>WiredWirelessSP</th>
+                                <th>HeadphoneJackSP</th>
+                                <th>CompatibleDevicesSP</th>
+                                <th>BatterySP</th>
+                                <th>USBPortsSP</th>
+                                <th>BluetoothVersionSP</th>
+                                <th>BatteryLifeSP</th>
+                                <th>WirelessRangeSP</th>
+                                <th>WidthSP</th>
+                                <th>HeightSP</th>
+                                <th>DepthSP</th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <% products.forEach((row,index) => { %>
+                            <tr class="align-middle">
+                                <td><%= index %></td>
+                                <td><img src="<%= row.imagePath %>" width="50" class="img-thumbnail" ></td>
+                                <td><%= row.product %></td>
+                                <td><%= row.model %></td>
+                                <td><%= row.BluetoothSP %></td>
+                                <td><%= row.MemoryCardSlotSP %></td>
+                                <td><%= row.ConfigurationSP %></td>
+                                <td><%= row.PowerOutputSP %></td>
+                                <td><%= row.category %></td>
+                                 <td><%= row.brand %></td>
+                                <td><%= row.price %></td>
+                                <td><%= row.discountPercentage %></td>
+                                <td>
+                                    <a href="/edit_product/<%= row._id %>" class="text-sucess"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                                    
+                                    <a href="/delete_product/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+
+                                    <a href="/block/<%= row._id %>" class="text-warning"><i class="fas fa-stop fa-lg mx-1"></i></a>
+
+                                </td>
+                                <td><%= row.ColorSP %></td>
+                                <td><%= row.TypeSP %></td>
+                                <td><%= row.WiredWirelessSP%></td>
+                                <td><%= row.HeadphoneJackSP %></td>
+                                <td><%= row.CompatibleDevicesSP %></td>
+                                <td><%= row.BatterySP %></td>
+                                <td><%= row.USBPortsSP %></td>
+                                <td><%= row.BluetoothVersionSP %></td>
+                                <td><%= row.BatteryLifeSP %></td>
+                                <td><%= row.WirelessRangeSP %></td>
+                                <td><%= row.WidthSP %></td>
+                                <td><%= row.HeightSP %></td>
+                                <td><%= row.DepthSP %></td>
+                                
+                                
+                            </tr>
+                          <% }); %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <h1 class="text_center text-secondary mt-5">no user found in the database</h1>
+                    <% } %>
+
+            </section>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/datatables.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("table").DataTable({
+                        order: [[0, 'desc']] 
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                          $('#sidebarCollapse').on('click', function () {
+                              $('#sidebar').toggleClass('active');
+                          });
+                      });
+              </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var truncateElements = document.querySelectorAll('#admintext');
+        truncateElements.forEach(function(element) {
+            var fullText = element.textContent.trim();
+            var truncatedText = fullText.split(' ').slice(0, 10).join(' ') + '...';
+            element.textContent = truncatedText;
+        });
+    });
+</script>

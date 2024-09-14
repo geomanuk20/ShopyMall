@@ -1,0 +1,172 @@
+<%- include('partials/header', { title: title }) %>
+<section id="lapuserprofile">
+    <div id="list">
+    <div  class="row-md-3">
+        <div class="row ms-5  pt-3">
+            <div class="card ">
+              <h6><img style="margin-right: 1px;" class="ms-2 my-1" width="55" height="55" src="https://img.icons8.com/color/48/name--v1.png" alt="name--v1"/>&nbsp;hello</h6>
+              <h6 class="text-center ms-5" style="margin-top: -25px;">&nbsp;<%= Name %></h6>
+              </div>
+            </div>
+      </div>
+      <div id="border" class="row ms-5  pt-5">
+        <div class="card border-0">
+            <h5><a id="text" href="/user-profile"><img width="35" height="35" src="https://img.icons8.com/ios-filled/35/order-completed.png" alt="order-completed"/>&nbsp;My Orders</a></h5>
+          </div>
+        </div>
+        <div id="border" class="row ms-5  pt-3">
+          <div class="card border-0">
+              <h5><img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/40/user.png" alt="user"/>&nbsp;My Account</h5>
+              <a id="text" class="text-end" href="">Profile information</a>
+              <a id="text"class="text-center ms-4" href="/address">Manage address</a>
+              <br>
+            </div>
+          </div>
+          <div  class="row ms-5  pt-3 ">
+            <div class="card border-0">
+                <h5><img width="30" height="30" src="https://img.icons8.com/ios-filled/35/topic.png" alt="topic"/>&nbsp;My Stuff</h5>
+                <a id="text" class="ms-5" href="/wishlist">wishlist</a>
+              </div>
+            </div>
+            <div class="row ms-5  pt-2">
+              <div class="card">
+                <button class=" border-0 bg-white"><a id="text" href="/logout">logout</a></button>
+                </div>
+              </div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+</section>
+
+<section id="mobileuserprofile">
+  <!-- Button to trigger offcanvas -->
+  <nav class="d-flex justify-content-between align-items-center" style="--bs-breadcrumb-divider: '<';" aria-label="breadcrumb">
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+      <img width="30" height="30" src="https://img.icons8.com/material-sharp/50/menu.png" alt="menu" />
+    </button>
+  
+    <ol class="breadcrumb mb-0 ms-5">
+      <li class="breadcrumb-item "><a class="text-decoration-none" href="/home">Home</a></li>
+      <li class="breadcrumb-item active " aria-current="page">MY Order</li>
+    </ol>
+  </nav>
+
+<!-- Offcanvas component -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">My Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Existing content -->
+    <section>
+      <div id="list" class="container">
+        <div class="row pt-3">
+          <div class="col-md-3 col-12">
+            <div class="card ">
+              <h6>
+                <img class="my-1 ms-3" width="40" height="40" src="https://img.icons8.com/color/48/name--v1.png"
+                  alt="name--v1" />
+                &nbsp;hello,   <%= Name %>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none; color: gray;"  href="/user-profile">
+                  <img width="35" height="35" src="https://img.icons8.com/ios-filled/35/order-completed.png"
+                    alt="order-completed" />
+                  &nbsp;My Orders
+                </a>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none;color: black;" href="">
+                  <img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/40/user.png"
+                    alt="user" />
+                  &nbsp;My Account
+                </a>
+              </h5>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="text-center d-block" href="/user-personal-information">Profile information</a>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="text-center d-block" href="/address">Manage address</a>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none;color: black;" href="">
+                  <img width="30" height="30" src="https://img.icons8.com/ios-filled/35/topic.png" alt="topic" />
+                  &nbsp;My Stuff
+                </a>
+              </h5>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="ms-5 d-block" href="/wishlist">wishlist</a>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-12">
+            <div class="card">
+              <button class="btn border-0 bg-white w-100">
+                <a style="text-decoration: none;color: red;" href="/logout">logout</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+</section>
+<section id="mobileuserprofile">
+  <div id="myorder" class="container">
+    <div class="ms-4 mt-4">
+      <h5>Personal Information <a href="/user-personal-edit/<%= id %>" style="text-decoration: none;"><small>Edit</small></a></h5>
+      <br>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+          <h6 class="text-secondary">
+            <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/user.png" alt="user"/>
+            &nbsp;&nbsp;<%= Name %>
+          </h6>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <h6 class="text-secondary">
+            <img width="25" height="25" src="https://img.icons8.com/forma-light-filled/30/000000/phone.png" alt="phone"/>
+            &nbsp;&nbsp;<%= phone %>
+          </h6>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <h6 class="text-secondary">
+            <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/secured-letter--v1.png" alt="secured-letter--v1"/>
+            &nbsp;&nbsp;<%= email %>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<section id="lapuserprofile">
+  <div id="myorder">
+    <div class="ms-4 mt-4">
+      <h5>personal information <a href="/user-personal-edit/<%= id %>" style="text-decoration: none;"><small>Edit</small></a></h5>
+      <br>
+      <h6 class="text-secondary"><img width="25" height="25" src="https://img.icons8.com/ios-filled/25/user.png" alt="user"/>&nbsp;&nbsp;<%= Name %></h6>
+      <h6 class="text-secondary"><img width="25" height="25" src="https://img.icons8.com/forma-light-filled/30/000000/phone.png" alt="phone"/>&nbsp;&nbsp;<%= phone %></h6>
+      <h6 class="text-secondary"><img width="25" height="25" src="https://img.icons8.com/ios-filled/25/secured-letter--v1.png" alt="secured-letter--v1"/>&nbsp;&nbsp;<%= email %></h6>
+    </div>
+</section>

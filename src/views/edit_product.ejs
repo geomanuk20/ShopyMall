@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Edit product (<%= product.product %>)</h1>
+        <button style="float: right;"><a href="/">home</a></button>
+        <form action="/update_product/<%= product._id  %>" method="post" id="add-form" enctype="multipart/form-data">
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+              <option value="mobile" <%= product.category === 'mobile' ? 'selected' : '' %>>mobile</option>
+              <option value="gadget" <%= product.category === 'gadget' ? 'selected' : '' %>>gadget</option>
+              <option value="watch" <%= product.category === 'watch' ? 'selected' : '' %>>watch</option>
+              <option value="earPhone" <%= product.category === 'earPhone' ? 'selected' : '' %>>earPhone</option>
+              <option value="speaker" <%= product.category === 'speaker' ? 'selected' : '' %>>speaker</option>
+              <option value="charger" <%= product.category === 'charger' ? 'selected' : '' %>>charger</option>
+              <option value="storagedevice" <%= product.category === 'storagedevice' ? 'selected' : '' %>>storagedevice</option>
+              <option value="powerbank" <%= product.category === 'powerbank' ? 'selected' : '' %>>powerbank</option>
+              <option value="smartpoint" <%= product.category === 'smartpoint' ? 'selected' : '' %>>smartpoint</option>
+              <option value="SUPER VALUE MOBILES" <%= product.category === 'SUPER VALUE MOBILES' ? 'selected' : '' %>>SUPER VALUE MOBILES</option>
+          </select><br>
+          <label for="brand">brand:</label>
+          <select id="brand" name="brand" required>
+            <option value="Apple" <%= product.brand === 'Apple' ? 'selected' : '' %>>Apple</option>
+            <option value="Redmi" <%= product.brand === 'Redmi' ? 'selected' : '' %>>Redmi</option>
+            <option value="Samsung" <%= product.brand === 'Samsung' ? 'selected' : '' %>>Samsung</option>
+            <option value="Google" <%= product.brand === 'Google' ? 'selected' : '' %>>Google</option>
+            <option value="OnePlus" <%= product.brand === 'OnePlus' ? 'selected' : '' %>>OnePlus</option>
+            <option value="Motorola" <%= product.brand === 'Motorola' ? 'selected' : '' %>>Motorola</option>
+            <option value="Nothing" <%= product.brand === 'Nothing' ? 'selected' : '' %>>Nothing</option>
+            <option value="Honor" <%= product.brand === 'Honor' ? 'selected' : '' %>>Honor</option>
+            <option value="Realme" <%= product.brand === 'Realme' ? 'selected' : '' %>>Realme</option>
+            <option value="Vivo" <%= product.brand === 'Vivo' ? 'selected' : '' %>>Vivo</option>
+            <option value="Sony" <%= product.brand === 'Sony' ? 'selected' : '' %>>Sony</option>
+            <option value="Oppo" <%= product.brand === 'Oppo' ? 'selected' : '' %>>Oppo</option>
+            <option value="Play" <%= product.brand === 'Play' ? 'selected' : '' %>>Play</option>
+            <option value="Og" <%= product.brand === 'Og' ? 'selected' : '' %>>Og</option>
+            <option value="Just Coreseca" <%= product.brand === 'Just Coreseca' ? 'selected' : '' %>>Just Coreseca</option>
+            <option value="Pebble" <%= product.brand === 'Pebble' ? 'selected' : '' %>>Pebble</option>
+            <option value="boat" <%= product.brand === 'boat' ? 'selected' : '' %>>boat</option>
+            <option value="boult" <%= product.brand === 'boult' ? 'selected' : '' %>>boult</option>
+            <option value="SUPER VALUE MOBILES" <%= product.brand === 'SUPER VALUE MOBILES' ? 'selected' : '' %>>SUPER VALUE MOBILES</option>
+          </select><br>
+            <div id="div3" class="form-group">
+                <label id="div3"  for="product">product:</label>
+                <input  type="text"  class="form-control" id="product"  name="product" placeholder="product" value="<%= product.product %>" minlength="3">
+              </div>
+              <div id="div3" class="form-group">
+               <label id="div3" for="model">model:</label>
+                <input id="div3" type="text" class="form-control" id="model" name="model" placeholder="model"value="<%= product.model %>"  >
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3" for="price">price:</label>
+                 <input id="div3" type="text" class="form-control" id="price" name="price" placeholder="price"value="<%= product.price %>"  >
+               </div>
+               <div id="div3" class="form-group">
+                <label id="div3" for="discountPercentage">discountPercentage:</label>
+                 <input id="div3" type="text" class="form-control" id="discountPercentage" name="discountPercentage" placeholder="%"value="<%= product.discountPercentage %>"  >
+               </div>
+               <div class="form-group">
+                <label for="imagePath">Image1</label>
+                <input type="file" class="form-control-file" id="imagePath1" name="imagePath1">
+                <input type="hidden" name="ImagePath1" value="/uploads/<%= product.imagePath1 %>">
+                <% if (product.imagePath1) { %>
+                  <img src="/uploads/<%= product.imagePath1 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+            </div>
+            <input type="hidden" name="old_name" value="<%= product.imagePath1 %>" alt="image1">
+               <div class="form-group">
+                <label for="imagePath">Image2</label>
+                <input type="file" class="form-control-file" id="imagePath2" name="imagePath2">
+                <input type="hidden" name="ImagePath2" value="/uploads/<%= product.imagePath2 %>">
+                <% if (product.imagePath2) { %>
+                  <img src="/uploads/<%= product.imagePath2 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+            </div>
+            <input type="hidden" name="old_name" value="<%= product.imagePath2 %>" alt="image2">
+               <div class="form-group">
+                <label for="imagePath">Image3</label>
+                <input type="file" class="form-control-file" id="imagePath3" name="imagePath3">
+                <input type="hidden" name="ImagePath3" value="<%= product.imagePath3 %>">
+                <% if (product.imagePath3) { %>
+                  <img src="/uploads/<%= product.imagePath3 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+            </div>
+            <input type="hidden" name="old_name" value="<%= product.imagePath3 %>" alt="image3">
+               <div class="form-group">
+                <label for="imagePath">Image4</label>
+                <input type="file" class="form-control-file" id="imagePath4" name="imagePath4">
+                <input type="hidden" name="ImagePath4" value="<%= product.imagePath4 %>">
+                <% if (product.imagePath4) { %>
+                  <img src="/uploads/<%= product.imagePath4 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+            </div>
+            <input type="hidden" name="old_name" value="<%= product.imagePath4 %>" alt="image4">
+               <div class="form-group">
+                <label for="imagePath">Image5</label>
+                <input type="file" class="form-control-file" id="imagePath5" name="imagePath5">
+                <input type="hidden" name="ImagePath5" value="<%= product.imagePath5 %>">
+                <% if (product.imagePath5) { %>
+                  <img src="/uploads/<%= product.imagePath5 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+            </div>
+            <input type="hidden" name="old_name" value="<%= product.imagePath5 %>" alt="image5">
+               <div class="form-group">
+                <label for="imagePath">Image6</label>
+                <input type="file" class="form-control-file" id="imagePath6" name="imagePath6">
+                <input type="hidden" name="ImagePath6" value="<%= product.imagePath6 %>">
+                <% if (product.imagePath6) { %>
+                  <img src="/uploads/<%= product.imagePath6 %>" width="100" class="img-thumbnail mt-1">
+              <% } else { %>
+                  <p>No image available</p>
+              <% } %>
+              <input type="hidden" name="old_name" value="<%= product.imagePath6 %>" alt="image6">
+            </div>
+            <div>
+              <label id="div3" for="password">Color:</label>
+              <input id="div3" type="text" class="form-control" id="Color" name="Color" placeholder="Color" value="<%= product.Color %>"   >
+            </div>
+            <div id="mobile-fields" style="display: none;">
+              <div id="div3" class="form-group">
+                <label id="div3" for="password">ram:</label>
+                 <input id="div3" type="text" class="form-control" id="ram" name="ram" placeholder="ram" value="<%= product.ram %>"   >
+                 </div>
+                 <div>
+                 <label id="div3" for="password">rom:</label>
+                 <input id="div3" type="text" class="form-control" id="rom" name="rom" placeholder="rom" value="<%= product.rom %>"   >
+               </div>
+                 <label id="div3" for="password">battery:</label>
+                 <input id="div3" type="text" class="form-control" id="battery" name="battery" placeholder="battery" value="<%= product.battery %>"   >
+               
+               <div>
+                 <label id="div3" for="password">display:</label>
+                 <input id="div3" type="text" class="form-control" id="display" name="display" placeholder="display" value="<%= product.display %>"   >
+               </div>
+               <div>
+                 <label id="div3" for="password">processor:</label>
+                 <input id="div3" type="text" class="form-control" id="processor" name="processor" placeholder="processor" value="<%= product.processor %>"   >
+               </div>
+              <div>
+                 <label id="div3" for="password">camera:</label>
+                 <input id="div3" type="text" class="form-control" id="camera" name="camera" placeholder="camera" value="<%= product.camera %>"   >
+               </div>
+              
+              <div>
+                <label id="div3" for="password">BrowseType:</label>
+                <input id="div3" type="text" class="form-control" id="BrowseType" name="BrowseType" placeholder="BrowseType"value="<%= product.BrowseType %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SimType:</label>
+                <input id="div3" type="text" class="form-control" id="SimType" name="SimType" placeholder="SimType"value="<%= product.SimType %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HybridsimSlot:</label>
+                <input id="div3" type="text" class="form-control" id="HybridsimSlot" name="HybridsimSlot" placeholder="HybridsimSlot" value="<%= product.HybridsimSlot %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">touchscreen:</label>
+                <input id="div3" type="text" class="form-control" id="touchscreen" name="touchscreen" placeholder="touchscreen" value="<%= product.touchscreen %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">OTGCompatible:</label>
+                <input id="div3" type="text" class="form-control" id="OTGCompatible" name="OTGCompatible" placeholder="OTGCompatible" value="<%= product.OTGCompatible %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">QuickCharging:</label>
+                <input id="div3" type="text" class="form-control" id="QuickCharging" name="QuickCharging" placeholder="QuickCharging" value="<%= product.QuickCharging %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">SoundEnhancements:</label>
+                <input id="div3" type="text" class="form-control" id="SoundEnhancements" name="SoundEnhancements" placeholder="SoundEnhancements" value="<%= product.SoundEnhancements%>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">DisplayFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="DisplayFeatures" name="DisplayFeatures" placeholder="DisplayFeatures" value="<%= product.DisplayFeatures %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">DisplaySize:</label>
+                <input id="div3" type="text" class="form-control" id="DisplaySize" name="DisplaySize" placeholder="DisplaySize" value="<%= product.DisplaySize %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">ResolutionType:</label>
+                <input id="div3" type="text" class="form-control" id="ResolutionType" name="ResolutionType" placeholder="ResolutionType" value="<%= product.ResolutionType %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">DisplayType:</label>
+                <input id="div3" type="text" class="form-control" id="DisplayType" name="DisplayType" placeholder="DisplayType" value="<%= product.DisplayType %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">OtherDisplayFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="OtherDisplayFeatures" name="OtherDisplayFeatures" placeholder="OtherDisplayFeatures"value="<%= product.OtherDisplayFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OsProcessorFeature:</label>
+                <input id="div3" type="text" class="form-control" id="OsProcessorFeature" name="OsProcessorFeature" placeholder="OsProcessorFeature" value="<%= product.OsProcessorFeature %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OperationSystem:</label>
+                <input id="div3" type="text" class="form-control" id="OperationSystem" name="OperationSystem" placeholder="OperationSystem" value="<%= product.OperationSystem %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ProcessorType:</label>
+                <input id="div3" type="text" class="form-control" id="ProcessorType" name="ProcessorType" placeholder="ProcessorType"value="<%= product.ProcessorType %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OperationFrequency:</label>
+                <input id="div3" type="text" class="form-control" id="OperationFrequency" name="OperationFrequency" placeholder="OperationFrequency" value="<%= product.OperationFrequency %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">MemoryStorageFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="MemoryStorageFeatures" name="MemoryStorageFeatures" placeholder="MemoryStorageFeatures" value="<%= product.MemoryStorageFeatures %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">InternalStorage:</label>
+                <input id="div3" type="text" class="form-control" id="InternalStorage" name="InternalStorage" placeholder="InternalStorage" value="<%= InternalStorage %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">CameraFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="CameraFeatures" name="CameraFeatures" placeholder="CameraFeatures" value="<%= product.CameraFeatures %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">PrimaryCameraAvailable:</label>
+                <input id="div3" type="text" class="form-control" id="PrimaryCameraAvailable" name="PrimaryCameraAvailable" placeholder="PrimaryCameraAvailable"value="<%= product.PrimaryCameraAvailable %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">PrimaryCamera:</label>
+                <input id="div3" type="text" class="form-control" id="PrimaryCamera" name="PrimaryCamera" placeholder="PrimaryCamera" value="<%= product.PrimaryCamera %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">PrimaryCameraFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="PrimaryCameraFeatures" name="PrimaryCameraFeatures" placeholder="PrimaryCameraFeatures" value="<%= product.PrimaryCameraFeatures%>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">SecondaryCameraAvailable:</label>
+                <input id="div3" type="text" class="form-control" id="SecondaryCameraAvailable" name="SecondaryCameraAvailable" placeholder="SecondaryCameraAvailable" value="<%= product.SecondaryCameraAvailable %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">SecondaryCamera:</label>
+                <input id="div3" type="text" class="form-control" id="SecondaryCamera" name="SecondaryCamera" placeholder="SecondaryCamera"value="<%= product.SecondaryCamera %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SecondaryCameraFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="SecondaryCameraFeatures" name="SecondaryCameraFeatures" placeholder="SecondaryCameraFeatures"value="<%= product.SecondaryCameraFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HDRecording:</label>
+                <input id="div3" type="text" class="form-control" id="HDRecording" name="HDRecording" placeholder="HDRecording"value="<%= product.HDRecording %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">FullHDRecording:</label>
+                <input id="div3" type="text" class="form-control" id="FullHDRecording" name="FullHDRecording" placeholder="FullHDRecording"value="<%= product.FullHDRecording %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">VideoRecordingResolution:</label>
+                <input id="div3" type="text" class="form-control" id="VideoRecordingResolution" name="VideoRecordingResolution" placeholder="VideoRecordingResolution" value="<%= product.VideoRecordingResolution %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">DigitalZoom:</label>
+                <input id="div3" type="text" class="form-control" id="DigitalZoom" name="DigitalZoom" placeholder="DigitalZoom"value="<%= product.DigitalZoom %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">FrameRate:</label>
+                <input id="div3" type="text" class="form-control" id="FrameRate" name="FrameRate" placeholder="FrameRate"value="<%= product.FrameRate %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DualCameraLens:</label>
+                <input id="div3" type="text" class="form-control" id="DualCameraLens" name="DualCameraLens" placeholder="DualCameraLens" value="<%= product.DualCameraLens %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">CallFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="CallFeatures" name="CallFeatures" placeholder="CallFeatures"value="<%= product.CallFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SpeakerPhone:</label>
+                <input id="div3" type="text" class="form-control" id="SpeakerPhone" name="SpeakerPhone" placeholder="SpeakerPhone" value="<%= product.SpeakerPhone %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">ConnectivityFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="ConnectivityFeatures" name="ConnectivityFeatures" placeholder="ConnectivityFeatures"value="<%= product.ConnectivityFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">NetworkType:</label>
+                <input id="div3" type="text" class="form-control" id="NetworkType" name="NetworkType" placeholder="NetworkType" value="<%= product.NetworkType %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">SupportedNetwork:</label>
+                <input id="div3" type="text" class="form-control" id="SupportedNetwork" name="SupportedNetwork" placeholder="SupportedNetwork" value="<%= product.SupportedNetwork %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">InternetConnectivity:</label>
+                <input id="div3" type="text" class="form-control" id="InternetConnectivity" name="InternetConnectivity" placeholder="InternetConnectivity" value="<%= product.InternetConnectivity %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">PreinstalledBrowser:</label>
+                <input id="div3" type="text" class="form-control" id="PreinstalledBrowser" name="PreinstalledBrowser" placeholder="PreinstalledBrowser"value="<%= product.PreinstalledBrowser %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">MicroUSBVersion:</label>
+                <input id="div3" type="text" class="form-control" id="MicroUSBVersion" name="MicroUSBVersion" placeholder="MicroUSBVersion" value="<%= product.MicroUSBVersion %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">BluetoothSupport:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothSupport" name="BluetoothSupport" placeholder="BluetoothSupport" value="<%= product.BluetoothSupport %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">BluetoothVersion:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothVersion" name="BluetoothVersion" placeholder="BluetoothVersion" value="<%= product.BluetoothVersion %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">WifiVersion:</label>
+                <input id="div3" type="text" class="form-control" id="WifiVersion" name="WifiVersion" placeholder="WifiVersion" value="<%= product.WifiVersion %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">WiFiHotspot:</label>
+                <input id="div3" type="text" class="form-control" id="WiFiHotspot" name="WiFiHotspot" placeholder="WiFiHotspot"value="<%= product.WiFiHotspot %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">NFC:</label>
+                <input id="div3" type="text" class="form-control" id="NFC" name="NFC" placeholder="NFC" value="<%= product.NFC %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">GPSSupport:</label>
+                <input id="div3" type="text" class="form-control" id="GPSSupport" name="GPSSupport" placeholder="GPSSupport" value="<%= product.GPSSupport %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">OtherDetails:</label>
+                <input id="div3" type="text" class="form-control" id="OtherDetails" name="OtherDetails" placeholder="OtherDetails"value="<%= product.OtherDetails %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SmartPhone:</label>
+                <input id="div3" type="text" class="form-control" id="SmartPhone" name="SmartPhone" placeholder="SmartPhone"value="<%= product.SmartPhone %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SIMSize:</label>
+                <input id="div3" type="text" class="form-control" id="SIMSize" name="SIMSize" placeholder="SIMSize" value="<%= product.SIMSize %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">SMS:</label>
+                <input id="div3" type="text" class="form-control" id="SMS" name="SMS" placeholder="SMS" value="<%= product.SMS %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">VoiceInput:</label>
+                <input id="div3" type="text" class="form-control" id="VoiceInput" name="VoiceInput" placeholder="VoiceInput"value="<%= product.VoiceInput %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">GraphicPPI:</label>
+                <input id="div3" type="text" class="form-control" id="GraphicPPI" name="GraphicPPI" placeholder="GraphicPPI" value="<%= product.GraphicPPI %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Sensors:</label>
+                <input id="div3" type="text" class="form-control" id="Sensors" name="Sensors" placeholder="Sensors" value="<%= product.Sensors %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">OtherFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="OtherFeatures" name="OtherFeatures" placeholder="OtherFeatures" value="<%= product.OtherFeatures %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">GPSType:</label>
+                <input id="div3" type="text" class="form-control" id="GPSType" name="GPSType" placeholder="GPSType" value="<%= product.GPSType %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">MultimediaFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="MultimediaFeatures" name="MultimediaFeatures" placeholder="MultimediaFeatures" value="<%= product.MultimediaFeatures%>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">VideoFormats:</label>
+                <input id="div3" type="text" class="form-control" id="VideoFormats" name="VideoFormats" placeholder="VideoFormats" value="<%= product.VideoFormats %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">BatteryPowerFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryPowerFeatures" name="BatteryPowerFeatures" placeholder="BatteryPowerFeatures"value="<%= product.BatteryPowerFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BatteryCapacity:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryCapacity" name="BatteryCapacity" placeholder="BatteryCapacity"value="<%= product.BatteryCapacity %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Dimensions:</label>
+                <input id="div3" type="text" class="form-control" id="Dimensions" name="Dimensions" placeholder="Dimensions" value="<%= product.Dimensions %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Width:</label>
+                <input id="div3" type="text" class="form-control" id="Width" name="Width" placeholder="Width" value="<%= product.Width %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Height:</label>
+                <input id="div3" type="text" class="form-control" id="Height" name="Height" placeholder="Height" value="<%= product.Height %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Depth:</label>
+                <input id="div3" type="text" class="form-control" id="Depth" name="Depth" placeholder="Depth" value="<%= product.Depth %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Weight:</label>
+                <input id="div3" type="text" class="form-control" id="Weight" name="Weight" placeholder="Weight" value="<%= product.Weight %>"  >
+              </div>
+              <div>
+                <label id="div3" for="password">Warranty:</label>
+                <input id="div3" type="text" class="form-control" id="Warranty" name="Warranty" placeholder="Warranty" value="<%= product.Warranty %>"   >
+              </div>
+           </div>
+
+            <div id="watch-fields" style="display: none;">
+              <div>
+                <label id="div3" for="password">DialColor:</label>
+                <input id="div3" type="text" class="form-control" id="DialColor" name="DialColor" placeholder="DialColor" value="<%= product.DialColor %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DialShape:</label>
+                <input id="div3" type="text" class="form-control" id="DialShape" name="DialShape" placeholder="DialShape" value="<%= product.DialShape %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">StrapColor:</label>
+                <input id="div3" type="text" class="form-control" id="StrapColor" name="StrapColor" placeholder="StrapColor" value="<%= product.StrapColor %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">StrapMaterial:</label>
+                <input id="div3" type="text" class="form-control" id="StrapMaterial" name="StrapMaterial" placeholder="StrapMaterial" value="<%= product.StrapMaterial %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Size:</label>
+                <input id="div3" type="text" class="form-control" id="Size" name="Size" placeholder="Size" value="<%= product.Size %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">touchscreenWatch:</label>
+                <input id="div3" type="text" class="form-control" id="touchscreenWatch" name="touchscreenWatch" placeholder="touchscreenWatch" value="<%= product.touchscreenWatch %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WaterResistant:</label>
+                <input id="div3" type="text" class="form-control" id="WaterResistant" name="WaterResistant" placeholder="WaterResistant" value="<%= product.WaterResistant %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WaterResistanceDepth:</label>
+                <input id="div3" type="text" class="form-control" id="WaterResistanceDepth" name="WaterResistanceDepth" placeholder="WaterResistanceDepth" value="<%= product.WaterResistanceDepth %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Usage:</label>
+                <input id="div3" type="text" class="form-control" id="Usage" name="Usage" placeholder="Usage" value="<%= product.Usage %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DialMaterial:</label>
+                <input id="div3" type="text" class="form-control" id="DialMaterial" name="DialMaterial" placeholder="DialMaterial" value="<%= product.DialMaterial %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">IdealFor:</label>
+                <input id="div3" type="text" class="form-control" id="IdealFor" name="IdealFor" placeholder="IdealFor" value="<%= product.IdealFor %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CompatibleOS:</label>
+                <input id="div3" type="text" class="form-control" id="CompatibleOS" name="CompatibleOS" placeholder="CompatibleOS" value="<%= product.CompatibleOS %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Closure:</label>
+                <input id="div3" type="text" class="form-control" id="Closure" name="Closure" placeholder="Closure" value="<%= product.Closure %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Notification:</label>
+                <input id="div3" type="text" class="form-control" id="Notification" name="Notification" placeholder="Notification" value="<%= product.Notification %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">NotificationType:</label>
+                <input id="div3" type="text" class="form-control" id="NotificationType" name="NotificationType" placeholder="NotificationType" value="<%= product.NotificationType %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Talktime:</label>
+                <input id="div3" type="text" class="form-control" id="Talktime" name="Talktime" placeholder="Talktime" value="<%= product.Talktime %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BatteryLife:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryLife" name="BatteryLife" placeholder="BatteryLife" value="<%= product.BatteryLife %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">RechargeableBattery:</label>
+                <input id="div3" type="text" class="form-control" id="RechargeableBattery" name="RechargeableBattery" placeholder="RechargeableBattery" value="<%= product.RechargeableBattery %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ChargerType:</label>
+                <input id="div3" type="text" class="form-control" id="ChargerType" name="ChargerType" placeholder="ChargerType" value="<%= product.ChargerType %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">StandByTime:</label>
+                <input id="div3" type="text" class="form-control" id="StandByTime" name="StandByTime" placeholder="StandByTime" value="<%= product.StandByTime %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CallFunction:</label>
+                <input id="div3" type="text" class="form-control" id="CallFunction" name="CallFunction" placeholder="CallFunction" value="<%= product.CallFunction %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Bluetooth:</label>
+                <input id="div3" type="text" class="form-control" id="Bluetooth" name="Bluetooth" placeholder="Bluetooth" value="<%= product.Bluetooth %>"   >
+              </div>
+              
+              
+              <div>
+                <label id="div3" for="password">MessagingSupport:</label>
+                <input id="div3" type="text" class="form-control" id="MessagingSupport" name="MessagingSupport" placeholder="MessagingSupport" value="<%= product.MessagingSupport %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">DisplayResolution:</label>
+                <input id="div3" type="text" class="form-control" id="DisplayResolution" name="DisplayResolution" placeholder="DisplayResolution" value="<%= product.DisplayResolution %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">BacklightDisplay:</label>
+                <input id="div3" type="text" class="form-control" id="BacklightDisplay" name="BacklightDisplay" placeholder="BacklightDisplay" value="<%= product.BacklightDisplay %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ScratchResistant:</label>
+                <input id="div3" type="text" class="form-control" id="ScratchResistant" name="ScratchResistant" placeholder="ScratchResistant" value="<%= product.ScratchResistant %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CalorieCount:</label>
+                <input id="div3" type="text" class="form-control" id="CalorieCount" name="CalorieCount" placeholder="CalorieCount" value="<%= product.CalorieCount %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">StepCount:</label>
+                <input id="div3" type="text" class="form-control" id="StepCount" name="StepCount" placeholder="StepCount" value="<%= product.StepCount %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeartRateMonitor:</label>
+                <input id="div3" type="text" class="form-control" id="HeartRateMonitor" name="HeartRateMonitor" placeholder="HeartRateMonitor" value="<%= product.HeartRateMonitor %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OtherFitnessFeatures:</label>
+                <input id="div3" type="text" class="form-control" id="OtherFitnessFeatures" name="OtherFitnessFeatures" placeholder="OtherFitnessFeatures" value="<%= product.OtherFitnessFeatures %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Calendar:</label>
+                <input id="div3" type="text" class="form-control" id="Calendar" name="Calendar" placeholder="Calendar" value="<%= product.Calendar %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">AlarmClock:</label>
+                <input id="div3" type="text" class="form-control" id="AlarmClock" name="AlarmClock" placeholder="AlarmClock" value="<%= product.AlarmClock %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">NumberofButtons:</label>
+                <input id="div3" type="text" class="form-control" id="NumberofButtons" name="NumberofButtons" placeholder="NumberofButtons" value="<%= product.NumberofButtons %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Speaker:</label>
+                <input id="div3" type="text" class="form-control" id="Speaker" name="Speaker" placeholder="Speaker" value="<%= product.Speaker %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Microphone:</label>
+                <input id="div3" type="text" class="form-control" id="Microphone" name="Microphone" placeholder="Microphone" value="<%= product.Microphone %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">VoiceControl:</label>
+                <input id="div3" type="text" class="form-control" id="VoiceControl" name="VoiceControl" placeholder="VoiceControl" value="<%= product.VoiceControl %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Thickness:</label>
+                <input id="div3" type="text" class="form-control" id="Thickness" name="Thickness" placeholder="Thickness" value="<%= product.Thickness %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">Diameter:</label>
+                <input id="div3" type="text" class="form-control" id="Diameter" name="Diameter" placeholder="Diameter" value="<%= product.Diameter %>"   >
+              </div>
+            </div>
+            <div id="earPhone-fields" style="display: none;">
+              <div>
+                <label id="div3" for="password">WithMicEP:</label>
+                <input id="div3" type="text" class="form-control" id="WithMicEP" name="WithMicEP" placeholder="WithMicEP" value="<%= product.WithMicEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BatteryLifeEP:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryLifeEP" name="BatteryLifeEP" placeholder="BatteryLifeEP" value="<%= product.BatteryLifeEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeadphoneTypeEP:</label>
+                <input id="div3" type="text" class="form-control" id="HeadphoneTypeEP" name="HeadphoneTypeEP" placeholder="HeadphoneTypeEP" value="<%= product.HeadphoneTypeEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SalesPackageEP:</label>
+                <input id="div3" type="text" class="form-control" id="SalesPackageEP" name="SalesPackageEP" placeholder="SalesPackageEP" value="<%= product.SalesPackageEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ConnectivityEP:</label>
+                <input id="div3" type="text" class="form-control" id="ConnectivityEP" name="ConnectivityEP" placeholder="ConnectivityEP" value="<%= product.ConnectivityEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeadphoneDesignEP:</label>
+                <input id="div3" type="text" class="form-control" id="HeadphoneDesignEP" name="HeadphoneDesignEP" placeholder="HeadphoneDesignEP" value="<%= product.HeadphoneDesignEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">AccessoriesIncludedEP:</label>
+                <input id="div3" type="text" class="form-control" id="AccessoriesIncludedEP" name="AccessoriesIncludedEP" placeholder="AccessoriesIncludedEP" value="<%= product.AccessoriesIncludedEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CompatatibleDevicesEP:</label>
+                <input id="div3" type="text" class="form-control" id="CompatatibleDevicesEP" name="CompatatibleDevicesEP" placeholder="CompatatibleDevicesEP" value="<%= product.CompatatibleDevicesEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">NetQuantityEP:</label>
+                <input id="div3" type="text" class="form-control" id="NetQuantityEP" name="NetQuantityEP" placeholder="NetQuantityEP" value="<%= product.NetQuantityEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SweatProofEP:</label>
+                <input id="div3" type="text" class="form-control" id="SweatProofEP" name="SweatProofEP" placeholder="SweatProofEP" value="<%= product.SweatProofEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DeepBassEP:</label>
+                <input id="div3" type="text" class="form-control" id="DeepBassEP" name="DeepBassEP" placeholder="DeepBassEP" value="<%= product.DeepBassEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DesignForEP:</label>
+                <input id="div3" type="text" class="form-control" id="DesignForEP" name="DesignForEP" placeholder="DesignForEP" value="<%= product.DesignForEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">SystemRequirmentsEP:</label>
+                <input id="div3" type="text" class="form-control" id="SystemRequirmentsEP" name="SystemRequirmentsEP" placeholder="SystemRequirmentsEP" value="<%= product.SystemRequirmentsEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">IndicatorEP:</label>
+                <input id="div3" type="text" class="form-control" id="IndicatorEP" name="IndicatorEP" placeholder="IndicatorEP" value="<%= product.IndicatorEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ControlsEP:</label>
+                <input id="div3" type="text" class="form-control" id="ControlsEP" name="ControlsEP" placeholder="ControlsEP" value="<%= product.ControlsEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeadphoneDriveUnitsEP:</label>
+                <input id="div3" type="text" class="form-control" id="HeadphoneDriveUnitsEP" name="HeadphoneDriveUnitsEP" placeholder="HeadphoneDriveUnitsEP" value="<%= product.HeadphoneDriveUnitsEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WithMicrophoneEP:</label>
+                <input id="div3" type="text" class="form-control" id="WithMicrophoneEP" name="WithMicrophoneEP" placeholder="WithMicrophoneEP" value="<%= product.WithMicrophoneEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WirelessRangeEP:</label>
+                <input id="div3" type="text" class="form-control" id="WirelessRangeEP" name="WirelessRangeEP" placeholder="WirelessRangeEP" value="<%= product.WirelessRangeEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BluetoothVersionEP:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothVersionEP" name="BluetoothVersionEP" placeholder="BluetoothVersionEP" value="<%= product.BluetoothVersionEP %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">BluetoothRangeEP:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothRangeEP" name="BluetoothRangeEP" placeholder="BluetoothRangeEP" value="<%= product.BluetoothRangeEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ChargingTimeEP:</label>
+                <input id="div3" type="text" class="form-control" id="ChargingTimeEP" name="ChargingTimeEP" placeholder="ChargingTimeEP" value="<%= product.ChargingTimeEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">PlayTimeEP:</label>
+                <input id="div3" type="text" class="form-control" id="PlayTimeEP" name="PlayTimeEP" placeholder="PlayTimeEP" value="<%= product.PlayTimeEP %>"   >
+              </div>
+              
+              
+              <div>
+                <label id="div3" for="password">StandbytimeEP:</label>
+                <input id="div3" type="text" class="form-control" id="StandbytimeEP" name="StandbytimeEP" placeholder="StandbytimeEP" value="<%= product.StandbytimeEP %>"   >
+              </div>
+              
+              <div>
+                <label id="div3" for="password">WidthEP:</label>
+                <input id="div3" type="text" class="form-control" id="WidthEP" name="WidthEP" placeholder="WidthEP" value="<%= product.WidthEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeightEP:</label>
+                <input id="div3" type="text" class="form-control" id="HeightEP" name="HeightEP" placeholder="HeightEP" value="<%= product.HeightEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DepthEP:</label>
+                <input id="div3" type="text" class="form-control" id="DepthEP" name="DepthEP" placeholder="DepthEP" value="<%= product.DepthEP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WeightEP:</label>
+                <input id="div3" type="text" class="form-control" id="WeightEP" name="WeightEP" placeholder="WeightEP" value="<%= product.WeightEP %>"   >
+              </div>
+            </div>
+            <div id="speaker-fields" style="display: none;">
+              <div>
+                <label id="div3" for="password">TypeSP:</label>
+                <input id="div3" type="text" class="form-control" id="TypeSP" name="TypeSP" placeholder="TypeSP" value="<%= product.TypeSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BluetoothSP:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothSP" name="BluetoothSP" placeholder="BluetoothSP" value="<%= product.BluetoothSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">MemoryCardSlotSP:</label>
+                <input id="div3" type="text" class="form-control" id="MemoryCardSlotSP" name="MemoryCardSlotSP" placeholder="MemoryCardSlotSP" value="<%= product.MemoryCardSlotSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ConfigurationSP:</label>
+                <input id="div3" type="text" class="form-control" id="ConfigurationSP" name="ConfigurationSP" placeholder="ConfigurationSP" value="<%= product.ConfigurationSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">PowerOutputSP:</label>
+                <input id="div3" type="text" class="form-control" id="PowerOutputSP" name="PowerOutputSP" placeholder="PowerOutputSP" value="<%= product.PowerOutputSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ColorSP:</label>
+                <input id="div3" type="text" class="form-control" id="ColorSP" name="ColorSP" placeholder="ColorSP" value="<%= product.ColorSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WiredWirelessSP:</label>
+                <input id="div3" type="text" class="form-control" id="WiredWirelessSP" name="WiredWirelessSP" placeholder="WiredWirelessSP" value="<%= product.WiredWirelessSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeadphoneJackSP:</label>
+                <input id="div3" type="text" class="form-control" id="HeadphoneJackSP" name="HeadphoneJackSP" placeholder="HeadphoneJackSP" value="<%= product.HeadphoneJackSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CompatibleDevicesSP:</label>
+                <input id="div3" type="text" class="form-control" id="CompatibleDevicesSP" name="CompatibleDevicesSP" placeholder="CompatibleDevicesSP" value="<%= product.CompatibleDevicesSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BatterySP:</label>
+                <input id="div3" type="text" class="form-control" id="BatterySP" name="BatterySP" placeholder="BatterySP" value="<%= product.BatterySP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">USBPortsSP:</label>
+                <input id="div3" type="text" class="form-control" id="USBPortsSP" name="USBPortsSP" placeholder="USBPortsSP" value="<%= product.USBPortsSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BluetoothVersionSP:</label>
+                <input id="div3" type="text" class="form-control" id="BluetoothVersionSP" name="BluetoothVersionSP" placeholder="BluetoothVersionSP" value="<%= product.BluetoothVersionSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">BatteryLifeSP:</label>
+                <input id="div3" type="text" class="form-control" id="BatteryLifeSP" name="BatteryLifeSP" placeholder="BatteryLifeSP" value="<%= product.BatteryLifeSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WirelessRangeSP:</label>
+                <input id="div3" type="text" class="form-control" id="WirelessRangeSP" name="WirelessRangeSP" placeholder="WirelessRangeSP" value="<%= product.WirelessRangeSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WidthSP:</label>
+                <input id="div3" type="text" class="form-control" id="WidthSP" name="WidthSP" placeholder="WidthSP" value="<%= product.WidthSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">HeightSP:</label>
+                <input id="div3" type="text" class="form-control" id="HeightSP" name="HeightSP" placeholder="HeightSP" value="<%= product.HeightSP %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DepthSP:</label>
+                <input id="div3" type="text" class="form-control" id="DepthSP" name="DepthSP" placeholder="DepthSP" value="<%= product.DepthSP %>"   >
+              </div>
+            </div>
+            <div id="powerbank-fields" style="display: none;">
+              <div>
+                <label id="div3" for="password">PowerSourcePB:</label>
+                <input id="div3" type="text" class="form-control" id="PowerSourcePB" name="PowerSourcePB" placeholder="PowerSourcePB" value="<%= product.PowerSourcePB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">CapacityPB:</label>
+                <input id="div3" type="text" class="form-control" id="CapacityPB" name="CapacityPB" placeholder="CapacityPB" value="<%= product.CapacityPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">NumberofOutputPortsPB:</label>
+                <input id="div3" type="text" class="form-control" id="NumberofOutputPortsPB" name="NumberofOutputPortsPB" placeholder="NumberofOutputPortsPB" value="<%= product.NumberofOutputPortsPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">ChargingCableIncludedPB:</label>
+                <input id="div3" type="text" class="form-control" id="ChargingCableIncludedPB" name="ChargingCableIncludedPB" placeholder="ChargingCableIncludedPB" value="<%= product.ChargingCableIncludedPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">PowerSupplyPB:</label>
+                <input id="div3" type="text" class="form-control" id="PowerSupplyPB" name="PowerSupplyPB" placeholder="PowerSupplyPB" value="<%= product.PowerSupplyPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OutputPowerPB:</label>
+                <input id="div3" type="text" class="form-control" id="OutputPowerPB" name="OutputPowerPB" placeholder="OutputPowerPB" value="<%= product.OutputPowerPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">OtherFeaturesPB:</label>
+                <input id="div3" type="text" class="form-control" id="OtherFeaturesPB" name="OtherFeaturesPB" placeholder="OtherFeaturesPB" value="<%= product.OtherFeaturesPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">widthPB:</label>
+                <input id="div3" type="text" class="form-control" id="widthPB" name="widthPB" placeholder="widthPB" value="<%= product.widthPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">DepthPB:</label>
+                <input id="div3" type="text" class="form-control" id="DepthPB" name="DepthPB" placeholder="DepthPB" value="<%= product.DepthPB %>"   >
+              </div>
+              <div>
+                <label id="div3" for="password">WeightPB:</label>
+                <input id="div3" type="text" class="form-control" id="WeightPB" name="WeightPB" placeholder="WeightPB" value="<%= product.WeightPB %>"   >
+              </div>
+            </div>
+            <!--charger-->
+           <div id="charger-fields" style="display: none;">
+            <div>
+              <label id="div3" for="password">OutputInterfaceC:</label>
+              <input id="div3" type="text" class="form-control" id="OutputInterfaceC" name="OutputInterfaceC" placeholder="OutputInterfaceC" value="<%= product.OutputInterfaceC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">LEDIndicatorC:</label>
+              <input id="div3" type="text" class="form-control" id="LEDIndicatorC" name="LEDIndicatorC" placeholder="LEDIndicatorC" value="<%= product.LEDIndicatorC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">DisplayC:</label>
+              <input id="div3" type="text" class="form-control" id="DisplayC" name="DisplayC" placeholder="DisplayC" value="<%= product.DisplayC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">ConnectorTypeC:</label>
+              <input id="div3" type="text" class="form-control" id="ConnectorTypeC" name="ConnectorTypeC" placeholder="ConnectorTypeC" value="<%= product.ConnectorTypeC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">NumberOfDeviceBatteriesChangedC:</label>
+              <input id="div3" type="text" class="form-control" id="NumberOfDeviceBatteriesChangedC" name="NumberOfDeviceBatteriesChangedC" placeholder="NumberOfDeviceBatteriesChangedC" value="<%= product.NumberOfDeviceBatteriesChangedC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">DesignedForC:</label>
+              <input id="div3" type="text" class="form-control" id="DesignedForC" name="DesignedForC" placeholder="DesignedForC" value="<%= product.DesignedForC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">NumberOfChargerPinsC:</label>
+              <input id="div3" type="text" class="form-control" id="NumberOfChargerPinsC" name="NumberOfChargerPinsC" placeholder="NumberOfChargerPinsC" value="<%= product.NumberOfChargerPinsC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">WidthxHeightxDepthC:</label>
+              <input id="div3" type="text" class="form-control" id="WidthxHeightxDepthC" name="WidthxHeightxDepthC" placeholder="WidthxHeightxDepthC" value="<%= product.WidthxHeightxDepthC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">WeightC:</label>
+              <input id="div3" type="text" class="form-control" id="WeightC" name="WeightC" placeholder="WeightC" value="<%= product.WeightC %>"   >
+            </div>
+            <div>
+              <label id="div3" for="password">OtherFeaturesC:</label>
+              <input id="div3" type="text" class="form-control" id="OtherFeaturesC" name="OtherFeaturesC" placeholder="OtherFeaturesC" value="<%= product.OtherFeaturesC %>"   >
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">CableTypeC:</label>
+              <input id="div3" type="text" class="form-control" id="CableTypeC" name="CableTypeC" placeholder="CableTypeC"  minlength="1">
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">PowerInputC:</label>
+              <input id="div3" type="text" class="form-control" id="PowerInputC" name="PowerInputC" placeholder="PowerInputC"  minlength="1">
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">PowerSourceC:</label>
+              <input id="div3" type="text" class="form-control" id="PowerSourceC" name="PowerSourceC" placeholder="PowerSourceC"  minlength="1">
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">OutputCurrentC:</label>
+              <input id="div3" type="text" class="form-control" id="OutputCurrentC" name="OutputCurrentC" placeholder="OutputCurrentC"  minlength="1">
+            </div>
+            
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">SecondarySlotOutputC:</label>
+              <input id="div3" type="text" class="form-control" id="SecondarySlotOutputC" name="SecondarySlotOutputC" placeholder="SecondarySlotOutputC"  minlength="1">
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">OutputWattageC:</label>
+              <input id="div3" type="text" class="form-control" id="OutputWattageC" name="OutputWattageC" placeholder="OutputWattageC"  minlength="1">
+            </div>
+            <div id="div3" class="form-group">
+              <label id="div3" for="password">OtherPowerFeaturesC:</label>
+              <input id="div3" type="text" class="form-control" id="OtherPowerFeaturesC" name="OtherPowerFeaturesC" placeholder="OtherPowerFeaturesC"  minlength="1">
+            </div>
+        </div>
+        <div id="storagedevice-fields" style="display: none;">
+          <div>
+            <label id="div3" for="password">ModelNumberSD:</label>
+            <input id="div3" type="text" class="form-control" id="ModelNumberSD" name="ModelNumberSD" placeholder="ModelNumberSD" value="<%= product.ModelNumberSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">WeightSD:</label>
+            <input id="div3" type="text" class="form-control" id="WeightSD" name="WeightSD" placeholder="WeightSD" value="<%= product.WeightSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">RamSizeSD:</label>
+            <input id="div3" type="text" class="form-control" id="RamSizeSD" name="RamSizeSD" placeholder="RamSizeSD" value="<%= product.RamSizeSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">MemoryStorageCapacitySD:</label>
+            <input id="div3" type="text" class="form-control" id="MemoryStorageCapacitySD" name="MemoryStorageCapacitySD" placeholder="MemoryStorageCapacitySD" value="<%= product.MemoryStorageCapacitySD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">FlashMemoryTypeSD:</label>
+            <input id="div3" type="text" class="form-control" id="FlashMemoryTypeSD" name="FlashMemoryTypeSD" placeholder="FlashMemoryTypeSD" value="<%= product.FlashMemoryTypeSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">DigitalStorageCapacitySD:</label>
+            <input id="div3" type="text" class="form-control" id="DigitalStorageCapacitySD" name="DigitalStorageCapacitySD" placeholder="DigitalStorageCapacitySD" value="<%= product.DigitalStorageCapacitySD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">HardWareInterfaceSD:</label>
+            <input id="div3" type="text" class="form-control" id="HardWareInterfaceSD" name="HardWareInterfaceSD" placeholder="HardWareInterfaceSD" value="<%= product.HardWareInterfaceSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">CampatibleDevicesSD:</label>
+            <input id="div3" type="text" class="form-control" id="CampatibleDevicesSD" name="CampatibleDevicesSD" placeholder="CampatibleDevicesSD" value="<%= product.CampatibleDevicesSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">SpecialFeatureSD:</label>
+            <input id="div3" type="text" class="form-control" id="SpecialFeatureSD" name="SpecialFeatureSD" placeholder="SpecialFeatureSD" value="<%= product.SpecialFeatureSD %>"   >
+          </div>
+          <div>
+            <label id="div3" for="password">ItemWeightSD:</label>
+            <input id="div3" type="text" class="form-control" id="ItemWeightSD" name="ItemWeightSD" placeholder="ItemWeightSD" value="<%= product.ItemWeightSD %>"   >
+          </div>
+        </div>
+       
+              <button type="submit" class="btn btn-success " value="update user" id="log" action="">update product</button>
+        </form>
+    </div>
+    
+    <script>
+      document.getElementById('category').addEventListener('change', function() {
+          var watchFields = document.getElementById('watch-fields');
+          var mobileFields = document.getElementById('mobile-fields');
+          var earPhoneFields = document.getElementById('earPhone-fields');
+          var speakerFields = document.getElementById('speaker-fields');
+          var powerbankFields = document.getElementById('powerbank-fields');
+          var chargerFields  = document.getElementById('charger-fields');
+          var storagedeviceFields = document.getElementById('storagedevice-fields')
+          
+          if (this.value === 'mobile') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'block';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          } else if (this.value === 'watch') {
+              watchFields.style.display = 'block';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          } else if (this.value === 'earPhone') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'block';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          }else if (this.value === 'speaker') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'block';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          } else if (this.value === 'powerbank') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'block';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          }else if (this.value === 'charger') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'block';
+              storagedeviceFields.style.display = 'none';
+          }else if (this.value === 'storagedevice') {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'block';
+          } else {
+              watchFields.style.display = 'none';
+              mobileFields.style.display = 'none';
+              earPhoneFields.style.display = 'none';
+              speakerFields.style.display = 'none';
+              powerbankFields.style.display = 'none';
+              chargerFields.style.display = 'none';
+              storagedeviceFields.style.display = 'none';
+          }
+      });
+  </script>
+  
+</body>
+</html>

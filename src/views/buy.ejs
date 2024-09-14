@@ -1,0 +1,410 @@
+<%- include('partials/header', { title: title }) %>
+
+<section id="laptopbuy">
+    <style>
+        .alert-dismissible .close {
+                padding: 0;
+                margin: 0;
+                color: inherit;
+     }
+     #alert-message {
+        position: fixed; /* Fixes the alert in place */
+        top: 20px;       /* Adjust top position as needed */
+        right: 20px;     /* Adjust right position as needed */
+        z-index: 1050;   /* Ensure alert is above other content */
+        max-width: 300px; /* Set a max-width if needed */
+        }
+
+    </style>
+    <div style="float: right;" id="alertMessage" class="alert alert-<%= alert.type %> alert-dismissible fade show" role="alert"></div>
+    <div id="buyaddress">
+        <a style="text-decoration: none; color: white;" href="/address-details">Add New Address</a>
+    </div>
+    <div id="Addressbuy">
+        <button id="loguserbutton">2</button>
+        <h6 id="logtext">SHIPPING ADDRESS</h6>
+        <% if (buy.length> 0) { %>
+            <h6 id="logname">
+                <%= buy[0].address %>,<%= buy[0].city %>
+                            <%= buy[0].zip %>,<%= buy[0].state %> <br>
+                                <%= buy[0].phonenumber %>,<%= buy[0].alternatenumber %>
+            </h6>
+            <% } else { %>
+                <h4>No Address Available</h4>
+                <% } %>
+    </div>
+    <div id="paymentmode">
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        
+        <h6 id="paymenttext">PAYMENT MODE</h6>
+          <form id="checkoutForm" action="/checkout" method="POST">
+            <!-- Other form fields -->
+        
+            <label>
+                <input type="radio" name="paymentMethod" value="Cash On Delivery" />
+                Cash On Delivery
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="paymentMethod" value="Online Payment" />
+                Online Payment
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="paymentMethod" value="EMI & Pay Later" /> EMI
+                & Pay Later
+            </label>
+        <br>
+            <% buy.forEach(item => { %>
+                <input type="hidden" name="product[]" value="<%= item._id %>">
+                <input type="hidden" name="model[]" value="<%= item.model %>">
+                <input type="hidden" name="price[]" value="<%= item.price %>">
+                <input type="hidden" name="Color[]" value="<%= item.Color %>">
+                <input type="hidden" name="discountPercentage[]" value="<%= item.discountPercentage %>">
+                <input type="hidden" name="imagePath1[]" value="<%= item.imagePath1 %>">
+                <input type="hidden" name="quantity[]" value="<%= item.quantity %>">
+            
+        
+            <input type="hidden" name="fullname[]" value="<%= buy[0].fullname %>">
+            <input type="hidden" name="address[]" value="<%= buy[0].address %>">
+            <input type="hidden" name="city[]" value="<%= buy[0].city %>">
+            <input type="hidden" name="state[]" value="<%= buy[0].state %>">
+            <input type="hidden" name="zip[]" value="<%= buy[0].zip %>">
+            <input type="hidden" name="phonenumber[]" value="<%= buy[0].phonenumber %>">
+            <input type="hidden" name="homework[]" value="<%= buy[0].homework %>">
+            <input type="hidden" name="date[]" value="<%= buy[0].date %>">
+            <input type="hidden" name="time[]" value="<%= buy[0].time %>">
+            <% }) %>
+            <img width="45" height="45" src="https://img.icons8.com/color/48/visa.png" alt="visa" />
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2Ya2xTZRjHO4nhskSnERB2AWdgihATg35ivbBuQQqu3YiSwDABBL84xLh17dZ2E4gkgDFRIxqUGKIQQsZa2gFjknAZhEsMg1BJ5sSVdfjFhC3L9sHEn3nPy6qdtN3ZKaEz50n+OSfvJef/e/NenvMaDHrooYceeujxf4ri8hP5RkfwiMkRGjA5QmSIBkz2ULPljeNFKc2b7ME/MsAwD5TirTUvIcD9kSfDdTghQIZNGx6sYH8yACaCDFoArHY/TcudtFtNRMx5DBdPURQ1z+KU1azULXUE4vus8tPkdNH+tZXI0UKG259UFDlaqJQ1Ot1Km4cO4LG5iZqfhWJDUvWZZuK2eWSf2gaigQI4MzmpooE5eGo8DwfA4jjGobKKlMb/rb+KszjlKUlpnFE69MmbWCqC6QVQa17o+ruLVJvnvn7Yszp9AGLaqDX/H+17XDVEfY1XO4BYsGJxagYoz4LT6gD6AvkJF/aYAcSOotZsuLxo3FOHUfLV1msD+NFqVA1w0/VScmNns5PXX8yPvbd9VaoN4I55drzBiyFYOR1ez4HLJ2XZimfk0/QYLHsCSqbA9qr4utJseHs63G6CX91wrQTO5cD5pyVQxyw4Ow0u5EK3MwYgzglNAEPGqfEA3/pg12bYuR6+2wabXoPG1bBrE3zjlc93FkPzF7BtrawTbVv3Q9Mq6CyT5jpmwq2NcOdTCdPzMXTXQXgt/PZRDGCoPSfNAHud8PkHUuJdmHSVS/PVFtjnYfj0QjmKkd0QXgM/LZHmLr0A4SromAGdpdJ072dwww7XlsJtnzTe7YoBDLY9pQ0gYs6NB6g2w5oiqFrwz7sY9VobbC2FnRu4e6AIbm2AS/OhqxquviJHWZi6+ZYsExA/r4Ou9+Hqq7LtlZehawt0LosB9LRonEIi39G8hY7ovUmqd6G2vRoXcaOtLn0AX6o/zLxat9ESu59e06idKIX+NE7i9/25ms+AaKBA+0EmU4l61aPdtfJ5zQDuD32PNpmLyat+7n+fzmROyGIPcrCsUnU6HV7/4rgyUUu60+kR1dsaxrQmxA/N1hU7ZJ8aL73+uSmN9/rnJp02aQEYWdi+5S7arBZ6zHnKYTdozOYXy3NKmdPWqPwAxfWp9CuJmchtxN4uTlihnpZCpUzsNqLNWL6vGSATZJjI1ypGe/BeYgB7qDnjARzBIwkBxN1jpl8tGiuOzUsIIKdRa564vhM3YI/csGNEwX4x8inN66GHHnrooYdhgsXf2pHBxr4pVMYAAAAASUVORK5CYII=" />
+            <img width="30" height="30" src="/public/unified-payment-interface-upi-logo-500F8DD29F-seeklogo.com.png" alt="" />
+        
+            <button type="button" id="onlinePayBtn" class="proceed" style="background-color: rgb(222, 68, 12)">
+                PROCEED
+            </button>
+        </form>
+        
+    </div>
+    <div id="loguser">
+        <button id="loguserbutton">1</button>
+        <h6 id="logtext">LOGIN USER</h6>
+        <h6 id="logname">
+            <%= Name %>
+        </h6>
+    </div>
+    <div id="order">
+        <button id="loguserbutton">3</button>
+        <h6 id="logtext">ORDER SUMMARY</h6>
+        <% let subTotal=0; let totalDiscount=0; buy.forEach(buy=> {
+            let discount = buy.price * (buy.discountPercentage / 100);
+            let discountedPrice = buy.price - discount;
+            subTotal += parseFloat(buy.price * buy.quantity);
+            totalDiscount += buy.price * buy.quantity * (buy.discountPercentage / 100);
+            %>
+            <div>
+                <div class="card mb" id="mybuy">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img id="logimg" width="80px" height="80px" src="<%= buy.imagePath1 %>"
+                                class="img-thumbnail">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title" id="proname">
+                                    <%= buy.model %>
+                                </h5>
+                                <h6 class="card-text" style="font-size: x-small;">
+                                    <%= buy.Color %>
+                                </h6>
+                                <h6 class="card-text">
+                                    <span id="proname" class="card-text mt-5">₹<%= formatNumber(discountedPrice) %>
+                                    </span>
+                                    <span class="original-price"
+                                        style="text-decoration: line-through; color: green">₹<%=
+                                            formatNumber(buy.price) %></span>
+                                    <span><small style="color: red; text-decoration: none;">
+                                            <%= buy.discountPercentage %>% off
+                                        </small></span>
+                                </h6>
+                                <div id="qty" class="mb-1">
+                                    <h6 class="ps-1">QTY</h6>
+                                    <h6 style="margin-left: 15px;">
+                                        <% if (buy && buy.quantity) { %>
+                                            <%= buy.quantity %>
+                                        <% } else { %>
+                                            1 <!-- Default quantity when user clicks "BUY NOW" -->
+                                        <% } %>
+                                    </h6>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+  
+                <% let discountedTotal=subTotal - totalDiscount; let deliveryCharge=discountedTotal> 500 ? 0 : 50;
+                    let totalAmount = discountedTotal + deliveryCharge;
+                    %>
+  
+                    <div>
+                        <h6>Total Amount: ₹<%= formatNumber(totalAmount) %>
+                        </h6>
+                    </div>
+    </div>
+  </section>
+  
+
+    <section class="container-fluid" id="mobilebuy">
+        <div id="loguser" class="card p-3 mb-3 mt-2">
+        <h6 id="logtext" class="mt-2">LOGIN USER</h6>
+        <h6 id="logname"><%= Name %></h6>
+    </div>
+    <div id="order" class="card p-3 mb-3">
+        <h6 id="logtext" class="mt-2">ORDER SUMMARY</h6>
+        <% 
+            let subTotals = 0; 
+            let totalDiscounts = 0; 
+
+            buy.forEach(item => {
+                let discount = item.price * (item.discountPercentage / 100);
+                let discountedPrice = item.price - discount;
+                subTotals += parseFloat(item.price * item.quantity);
+                totalDiscounts += item.price * item.quantity * (item.discountPercentage / 100);
+            }); // Close forEach loop
+        %>
+        <table class="table table-bordered table-responsive mt-2">
+            <thead>
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>DESCRIPTION</th>
+                    <th>QTY</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% buy.forEach(item => { %>
+                <tr>
+                    <td><img src="/uploads/<%= item.imagePath1 %>" alt="" width="60"></td>
+                    <td>
+                        <small>Model: <%= item.model %><br>
+                        Color: <%= item.Color %></small>
+                    </td>
+                    <td><%= item.quantity %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <% let discountedTotals=subTotals - totalDiscounts; let deliveryCharges=discountedTotals> 500 ? 0 : 50;
+                  let totalAmounts = discountedTotals + deliveryCharges;
+                  %>
+
+                  <div>
+                      <h6>Total Amount: ₹<%= formatNumber(totalAmounts) %>
+                      </h6>
+                  </div>
+    </div>
+    <div id="Addressbuy" class="card p-3 mb-3">
+        <h6 id="logtext" class="mt-2">SHIPPING ADDRESS</h6>
+        <% if (buy.length > 0) { %>
+        <h6 id="logname">
+            <%= buy[0].address %>, <%= buy[0].city %>, <%= buy[0].zip %>, <%= buy[0].state %><br>
+            <%= buy[0].phonenumber %>, <%= buy[0].alternatenumber %>
+        </h6>
+        <% } else { %>
+        <h4>No Address Available</h4>
+        <% } %>
+    </div>
+    <div id="paymentmode" class="card p-3 mb-3">
+        <h6 id="paymenttext" class="mb-3">PAYMENT MODE</h6>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <form id="checkoutForm" action="/checkout" method="POST">
+                <!-- Other form fields -->
+            
+                <label>
+                    <input type="radio" name="paymentMethod" value="Cash On Delivery" />
+                    Cash On Delivery
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="paymentMethod" value="Online Payment" />
+                    Online Payment
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="paymentMethod" value="EMI & Pay Later" /> EMI
+                    & Pay Later
+                </label>
+            <br>
+                <% buy.forEach(item => { %>
+                    <input type="hidden" name="product[]" value="<%= item._id %>">
+                    <input type="hidden" name="model[]" value="<%= item.model %>">
+                    <input type="hidden" name="price[]" value="<%= item.price %>">
+                    <input type="hidden" name="Color[]" value="<%= item.Color %>">
+                    <input type="hidden" name="discountPercentage[]" value="<%= item.discountPercentage %>">
+                    <input type="hidden" name="imagePath1[]" value="<%= item.imagePath1 %>">
+                    <input type="hidden" name="quantity[]" value="<%= item.quantity %>">
+                
+            
+                <input type="hidden" name="fullname[]" value="<%= buy[0].fullname %>">
+                <input type="hidden" name="address[]" value="<%= buy[0].address %>">
+                <input type="hidden" name="city[]" value="<%= buy[0].city %>">
+                <input type="hidden" name="state[]" value="<%= buy[0].state %>">
+                <input type="hidden" name="zip[]" value="<%= buy[0].zip %>">
+                <input type="hidden" name="phonenumber[]" value="<%= buy[0].phonenumber %>">
+                <input type="hidden" name="homework[]" value="<%= buy[0].homework %>">
+                <input type="hidden" name="date[]" value="<%= buy[0].date %>">
+                <input type="hidden" name="time[]" value="<%= buy[0].time %>">
+                <% }) %>
+                <img width="45" height="45" src="https://img.icons8.com/color/48/visa.png" alt="visa" />
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2Ya2xTZRjHO4nhskSnERB2AWdgihATg35ivbBuQQqu3YiSwDABBL84xLh17dZ2E4gkgDFRIxqUGKIQQsZa2gFjknAZhEsMg1BJ5sSVdfjFhC3L9sHEn3nPy6qdtN3ZKaEz50n+OSfvJef/e/NenvMaDHrooYceeujxf4ri8hP5RkfwiMkRGjA5QmSIBkz2ULPljeNFKc2b7ME/MsAwD5TirTUvIcD9kSfDdTghQIZNGx6sYH8yACaCDFoArHY/TcudtFtNRMx5DBdPURQ1z+KU1azULXUE4vus8tPkdNH+tZXI0UKG259UFDlaqJQ1Ot1Km4cO4LG5iZqfhWJDUvWZZuK2eWSf2gaigQI4MzmpooE5eGo8DwfA4jjGobKKlMb/rb+KszjlKUlpnFE69MmbWCqC6QVQa17o+ruLVJvnvn7Yszp9AGLaqDX/H+17XDVEfY1XO4BYsGJxagYoz4LT6gD6AvkJF/aYAcSOotZsuLxo3FOHUfLV1msD+NFqVA1w0/VScmNns5PXX8yPvbd9VaoN4I55drzBiyFYOR1ez4HLJ2XZimfk0/QYLHsCSqbA9qr4utJseHs63G6CX91wrQTO5cD5pyVQxyw4Ow0u5EK3MwYgzglNAEPGqfEA3/pg12bYuR6+2wabXoPG1bBrE3zjlc93FkPzF7BtrawTbVv3Q9Mq6CyT5jpmwq2NcOdTCdPzMXTXQXgt/PZRDGCoPSfNAHud8PkHUuJdmHSVS/PVFtjnYfj0QjmKkd0QXgM/LZHmLr0A4SromAGdpdJ072dwww7XlsJtnzTe7YoBDLY9pQ0gYs6NB6g2w5oiqFrwz7sY9VobbC2FnRu4e6AIbm2AS/OhqxquviJHWZi6+ZYsExA/r4Ou9+Hqq7LtlZehawt0LosB9LRonEIi39G8hY7ovUmqd6G2vRoXcaOtLn0AX6o/zLxat9ESu59e06idKIX+NE7i9/25ms+AaKBA+0EmU4l61aPdtfJ5zQDuD32PNpmLyat+7n+fzmROyGIPcrCsUnU6HV7/4rgyUUu60+kR1dsaxrQmxA/N1hU7ZJ8aL73+uSmN9/rnJp02aQEYWdi+5S7arBZ6zHnKYTdozOYXy3NKmdPWqPwAxfWp9CuJmchtxN4uTlihnpZCpUzsNqLNWL6vGSATZJjI1ypGe/BeYgB7qDnjARzBIwkBxN1jpl8tGiuOzUsIIKdRa564vhM3YI/csGNEwX4x8inN66GHHnrooYdhgsXf2pHBxr4pVMYAAAAASUVORK5CYII=" />
+                <img width="30" height="30" src="/public/unified-payment-interface-upi-logo-500F8DD29F-seeklogo.com.png" alt="" />
+            
+                <button type="button" id="onlinePayBtn" class="proceed" style="background-color: rgb(222, 68, 12)">
+                    PROCEED
+                </button>
+            </form>
+    </div>
+    
+</section>
+
+
+    <% function formatNumber(num) {
+     return num ? num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",").replace(/^0+/, '') : '0';
+} %>
+
+
+
+        <script>
+            let isFormSubmitted = false;
+
+            // Listener for the "go back" button
+            document.getElementById('goBackButton').addEventListener('click', function () {
+                isFormSubmitted = true; // Mark form as submitted
+            });
+
+            // Handle the 'beforeunload' event to show a confirmation dialog
+            window.addEventListener('beforeunload', function (event) {
+                if (!isFormSubmitted) {
+                    // Standard confirmation dialog
+                    const confirmationMessage = "Are you sure you want to conform? Your changes may not be saved.";
+
+                    // Display the native confirmation dialog
+                    event.preventDefault();
+                    event.returnValue = confirmationMessage; // Necessary for the dialog to appear
+
+                    return confirmationMessage; // Return the message for some browsers
+                }
+            });
+        </script>
+
+        <script>
+    document.getElementById('onlinePayBtn').onclick = async function (e) {
+        e.preventDefault(); // Prevent form submission
+
+        // Get the selected payment method
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        const alertMessageDiv = document.getElementById('alertMessage'); // Get the alert message container
+         // Function to show alert message
+         const showAlert = (message, type) => {
+            alertMessageDiv.innerHTML = `
+                <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+        };
+
+        // Clear any existing alerts
+        alertMessageDiv.innerHTML = '';
+
+        if (!paymentMethod) {
+            showAlert('Please select a payment method', 'danger');
+            return;
+        }
+
+        if (paymentMethod.value === "Online Payment") {
+            // Online Payment selected, trigger Razorpay integration
+            try {
+                let amount = parseFloat("<%= typeof totalAmount !== 'undefined' ? totalAmount : totalAmounts %>"); // Get total amount from your EJS template
+
+                const orderResponse = await fetch('/create-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ amount })
+                });
+
+                if (!orderResponse.ok) {
+                    throw new Error('Failed to create order');
+                }
+
+                const orderData = await orderResponse.json();
+
+                const options = {
+                    "key": "<%= process.env.RAZORPAY_KEY_ID %>", // Razorpay key ID
+                    "amount": orderData.amount,
+                    "currency": orderData.currency,
+                    "name": "ShopyMall",
+                    "description": "Purchase Description",
+                    "order_id": orderData.orderId,
+                    "handler": async function (response) {
+                        // After successful payment, verify payment
+                        try {
+                            const verificationResponse = await fetch('/payment-verification', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(response)
+                            });
+
+                            if (!verificationResponse.ok) {
+                                throw new Error('Payment verification failed');
+                            }
+
+                            const verificationData = await verificationResponse.json();
+                            if (verificationData.status === "success") {
+                                // Payment successful, redirect to success page
+                                //window.location.href = "/buy";
+                                document.getElementById('checkoutForm').submit();
+                            } else {
+                                alert('Payment verification failed');
+                            }
+                        } catch (err) {
+                            console.error('Error in payment verification:', err);
+                            alert('An error occurred during payment verification.');
+                        }
+                    },
+                    "prefill": {
+                        "name": "<%= buy[0].fullname %>",
+                        "email": "<%= buy[0].email %>",
+                        "contact": "<%= buy[0].phonenumber %>"
+                    }
+                };
+
+                const rzp1 = new Razorpay(options);
+                rzp1.open();
+
+            } catch (err) {
+                console.error('Error during order creation or Razorpay setup:', err);
+                alert('An error occurred. Please try again.');
+            }
+        } else {
+            // For Cash on Delivery or EMI, submit the form normally
+            document.getElementById('checkoutForm').submit();
+        }
+    }
+</script>
+
+<script>
+  // Auto-hide alert after 5 seconds
+  setTimeout(() => {
+      const alertElement = document.getElementById('alertMessage');
+      if (alertElement) {
+          alertElement.classList.remove('show');
+          alertElement.classList.add('fade');
+      }
+  }, 5000); // 5 seconds
+</script>

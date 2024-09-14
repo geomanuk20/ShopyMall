@@ -1,0 +1,27 @@
+<%- include('partials/header', { title: title }) %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="container">
+    <div class="container-fluid">
+        <h1>add new user</h1>
+        <button style="float: right;"><a href="/">home</a></button>
+        <form action="/add" method="post" id="add-form" enctype="multipart/form-data">
+            <div id="div3" class="form-group">
+                <label id="div3"  for="name">Email:</label>
+                <input  type="text"  class="form-control" id="email"  name="email" placeholder="email" required minlength="3">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3"  for="name">name:</label>
+                <input  type="text"  class="form-control" id="Name"  name="Name" placeholder="Name" required minlength="3">
+              </div>
+              <div id="div3" class="form-group">
+                <label id="div3"  for="name">phone:</label>
+                <input  type="text"  class="form-control" id="phone"  name="phone" placeholder="phone" required minlength="3">
+              </div>
+              <div id="div3" class="form-group">
+               <label id="div3" for="password">Password:</label>
+                <input id="div3" type="password" class="form-control" id="password" name="password" placeholder="password" required minlength="1">
+              </div>
+              <button type="submit" class="btn btn-primary" id="log" action="#">add user</button>
+        </div>
+        </form>
+        <%- include('partials/footer') %>

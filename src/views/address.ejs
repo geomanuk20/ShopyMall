@@ -1,0 +1,332 @@
+<%- include('partials/header', { title: title }) %>
+<style>
+  #alert-message {
+  position: fixed; /* Fixes the alert in place */
+  top: 20px;       /* Adjust top position as needed */
+  right: 20px;     /* Adjust right position as needed */
+  z-index: 1050;   /* Ensure alert is above other content */
+  max-width: 300px; /* Set a max-width if needed */
+}
+</style>
+<% if (typeof alert !== 'undefined' && alert) { %>
+  <div id="alert-message" class="alert alert-<%= alert.type %> alert-dismissible fade show" role="alert">
+    <%= alert.message %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+<section id="lapuserprofile">
+    <div id="list">
+    <div  class="row-md-3">
+        <div class="row ms-5  pt-3">
+            <div class="card ">
+              <h6><img style="margin-right: 1px;" class="ms-2 my-1" width="55" height="55" src="https://img.icons8.com/color/48/name--v1.png" alt="name--v1"/>&nbsp;hello</h6>
+              <h6 class="text-center ms-5" style="margin-top: -25px;">&nbsp;<%= Name %></h6>
+              </div>
+            </div>
+      </div>
+      <div id="border" class="row ms-5  pt-5">
+        <div class="card border-0">
+            <h5><a id="text" href="/user-profile"><img width="35" height="35" src="https://img.icons8.com/ios-filled/35/order-completed.png" alt="order-completed"/>&nbsp;My Orders</a></h5>
+          </div>
+        </div>
+        <div id="border" class="row ms-5  pt-3">
+          <div class="card border-0">
+              <h5><img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/40/user.png" alt="user"/>&nbsp;My Account</h5>
+              <a id="text" class="text-end" href="user-personal-information">Profile information</a>
+              <a id="text"class="text-center ms-4" href="">Manage address</a>
+              <br>
+            </div>
+          </div>
+          <div  class="row ms-5  pt-3 ">
+            <div class="card border-0">
+                <h5><img width="30" height="30" src="https://img.icons8.com/ios-filled/35/topic.png" alt="topic"/>&nbsp;My Stuff</h5>
+                <a id="text" class="ms-5" href="/wishlist">wishlist</a>
+              </div>
+            </div>
+            <div class="row ms-5  pt-2">
+              <div class="card">
+                <button class=" border-0 bg-white"><a id="text" href="/logout">logout</a></button>
+                </div>
+              </div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+</section>
+<section id="mobileuserprofile">
+  <!-- Button to trigger offcanvas -->
+  <nav class="d-flex justify-content-between align-items-center" style="--bs-breadcrumb-divider: '<';" aria-label="breadcrumb">
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+      <img width="30" height="30" src="https://img.icons8.com/material-sharp/50/menu.png" alt="menu" />
+    </button>
+  
+    <ol class="breadcrumb mb-0 ms-5">
+      <li class="breadcrumb-item "><a class="text-decoration-none" href="/home">Home</a></li>
+      <li class="breadcrumb-item active " aria-current="page">Mange Address</li>
+    </ol>
+  </nav>
+
+<!-- Offcanvas component -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">My Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Existing content -->
+    <section>
+      <div id="list" class="container">
+        <div class="row pt-3">
+          <div class="col-md-3 col-12">
+            <div class="card ">
+              <h6>
+                <img class="my-1 ms-3" width="40" height="40" src="https://img.icons8.com/color/48/name--v1.png"
+                  alt="name--v1" />
+                &nbsp;hello,   <%= Name %>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none; color: gray;"  href="/user-profile">
+                  <img width="35" height="35" src="https://img.icons8.com/ios-filled/35/order-completed.png"
+                    alt="order-completed" />
+                  &nbsp;My Orders
+                </a>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none;color: black;" href="">
+                  <img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/40/user.png"
+                    alt="user" />
+                  &nbsp;My Account
+                </a>
+              </h5>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="text-center d-block" href="/user-personal-information">Profile information</a>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="text-center d-block" href="/address">Manage address</a>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-12">
+            <div class="card border-0">
+              <h5>
+                <a style="text-decoration: none;color: black;" href="">
+                  <img width="30" height="30" src="https://img.icons8.com/ios-filled/35/topic.png" alt="topic" />
+                  &nbsp;My Stuff
+                </a>
+              </h5>
+              <a style="text-decoration: none; color: gray; margin-right: 100px;font-size: medium;" class="ms-5 d-block" href="/wishlist">wishlist</a>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-12">
+            <div class="card">
+              <button class="btn border-0 bg-white w-100">
+                <a style="text-decoration: none;color: red;" href="/logout">logout</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</section>
+<section id="mobileuserprofile">
+  <div id="myorder" class="table-responsive container-fluid p-3">
+    <div class="ms-2 mt-3">
+      <h4>Manage Address</h4>
+      <p class="d-flex flex-wrap gap-2">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <img width="20" height="20" src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="plus-math"/> Add a new address
+        </a>
+        <a class="btn btn-info text-white" href="/address-details">Details</a>
+      </p>
+      <br>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <form class="row g-3" action="/user-address" method="post" enctype="multipart/form-data">
+          <div class="col-12 col-md-6">
+            <label for="inputEmail4" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="inputEmail4" name="fullname" required>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="inputPassword4" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="inputPassword4" name="phonenumber" required>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="address" required>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity" name="city" required>
+          </div>
+          <div class="col-12 col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select" name="state" required>
+              <option selected></option>
+              <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option >Bihar</option>
+                <option >Chhattisgarh</option>
+                <option >Goa</option>
+                <option >Gujarat</option>
+                <option >Haryana</option>
+                <option >Himachal Pradesh</option>
+                <option >Jharkhand</option>
+                <option >Karnataka</option>
+                <option >Kerala</option>
+                <option >Bihar</option>
+                <option >Madhya Pradesh</option>
+                <option >Maharashtra</option>
+                <option >Manipur</option>
+                <option >Meghalaya</option>
+                <option >Mizoram</option>
+                <option >Nagaland</option>
+                <option >Odisha</option>
+                <option >Punjab</option>
+                <option >Rajasthan</option>
+                <option >Sikkim</option>
+                <option >Tamil Nadu</option>
+                <option >Telangana</option>
+                <option >Tripura</option>
+                <option >Uttar Pradesh</option>
+                <option >Uttarakhand</option>
+                <option >West Bengal</option>
+                <option >Delhi</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip" name="zip" required>
+          </div>
+          <div class="col-6 col-md-3 form-check">
+            <input class="form-check-input" type="radio" id="inlineRadio1" value="home" name="homework" required>
+            <label class="form-check-label" for="inlineRadio1">Home</label>
+          </div>
+          <div class="col-6 col-md-3 form-check">
+            <input class="form-check-input" type="radio" id="inlineRadio2" value="work" name="homework" required>
+            <label class="form-check-label" for="inlineRadio2">Work</label>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="inputPassword4" class="form-label">Alternate Mobile Number</label>
+            <input type="text" class="form-control" id="inputPassword4" name="alternatenumber" required>
+          </div>
+          <div class="col-12 d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-danger text-white" href="/address">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<section  id="lapuserprofile">
+  <div id="myorder" class="table-responsive">
+    <div class="ms-4 mt-4">
+      <h4>manage address</h4>
+      <p class="d-inline-flex gap-1">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <img width="20" height="20" src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="plus-math"/> Add a new address
+        </a>
+        <button class="btn btn-info"><a style="text-decoration: none; color: black;" href="/address-details">details</a></button>
+      </p>
+      <br>
+      </div>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form class="row g-3" action="/user-address" method="post" enctype="multipart/form-data">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label col-md-4" >Full name</label>
+              <input type="text" class="form-control" id="inputEmail4" name="fullname"  required>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Mobile Number</label>
+              <input type="text" class="form-control" id="inputPassword4" name="phonenumber" required>
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="inputAddress" name="address" required>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="inputCity" name="city" required>
+            </div>
+            <div class="col-md-4">
+              <label for="inputState" class="form-label">State</label>
+              <select id="inputState" class="form-select" name="state" required>
+                <option selected></option>
+                <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option >Bihar</option>
+                <option >Chhattisgarh</option>
+                <option >Goa</option>
+                <option >Gujarat</option>
+                <option >Haryana</option>
+                <option >Himachal Pradesh</option>
+                <option >Jharkhand</option>
+                <option >Karnataka</option>
+                <option >Kerala</option>
+                <option >Bihar</option>
+                <option >Madhya Pradesh</option>
+                <option >Maharashtra</option>
+                <option >Manipur</option>
+                <option >Meghalaya</option>
+                <option >Mizoram</option>
+                <option >Nagaland</option>
+                <option >Odisha</option>
+                <option >Punjab</option>
+                <option >Rajasthan</option>
+                <option >Sikkim</option>
+                <option >Tamil Nadu</option>
+                <option >Telangana</option>
+                <option >Tripura</option>
+                <option >Uttar Pradesh</option>
+                <option >Uttarakhand</option>
+                <option >West Bengal</option>
+                <option >Delhi</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="inputZip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="inputZip" name="zip" required>
+            </div>
+            <div class=" col-md-2 form-check form-check-inline">
+              <input class="form-check-input" type="radio"  id="inlineRadio1" value="home" name="homework"  required>
+              <label class="form-check-label" for="inlineRadio1" name="homework" >Home</label>
+            </div>
+            <div class="col-md-4 form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio2" value="work" name="homework" required>
+              <label class="form-check-label" for="inlineRadio2">Work</label>
+            </div>
+            <div class="col-md-4 form-check form-check-inline">
+              <label class="form-check-label" for="inlineRadio2" ><label for="inputPassword4" class="form-label" >alternate mobile number</label>
+              <input type="text" class="form-control" id="inputPassword4" name="alternatenumber" required></label>
+            </div>
+            <div class="col-9">
+              <button type="submit" class="btn btn-primary ">Save</button>
+              <button type="submit" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="/address">Cancel</a></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>

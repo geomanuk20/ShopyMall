@@ -1,0 +1,1782 @@
+body {
+  transition: background-color 0.5s ease;
+}
+
+.dark-mode {
+  background-color: black;
+  color: #fff;
+}
+
+/*navigation*/
+/* Base styles */
+.navbar {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.navbar-brand img {
+  width: 70px;
+  height: 50px;
+  margin-left: -30px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.search-container input[type="search"] {
+  padding-left: 30px; /* To make room for the search icon */
+}
+#product{
+  position: relative;
+}
+#search-item{
+  width: 700px;
+}
+.nav-link {
+  font-size: 1rem;
+  margin-left: 15px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+/* Dark mode toggle switch */
+#darkModeToggle {
+  margin-right: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .navbar-brand {
+      margin-left: 0;
+  }
+
+  .search-container {
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+
+  .navbar-collapse {
+      justify-content: flex-start;
+  }
+
+  .nav-item {
+      text-align: center;
+      margin: 10px 0;
+  }
+
+  .nav-link {
+      font-size: 1.2rem;
+  }
+
+  .navbar-toggler {
+      margin-left: auto;
+  }
+
+  .sticky-top {
+      z-index: 1020;
+  }
+  #search-item{
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+      flex: 1;
+  }
+
+  .navbar-collapse {
+      flex-direction: column;
+  }
+
+  .search-container {
+      width: 100%;
+      order: 2;
+  }
+
+  .navbar-brand img {
+      width: 60px;
+      height: 40px;
+  }
+
+  .nav-link {
+      font-size: 1rem;
+  }
+
+  .nav-item {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  .navbar-toggler {
+      margin-right: 10px;
+  }
+  #search-item{
+    width: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img {
+      width: 50px;
+      height: 35px;
+      margin-left: -50px;
+  }
+
+  .search-container {
+      order: 3;
+      margin-bottom: 1rem;
+  }
+
+  .navbar-collapse {
+      align-items: center;
+  }
+
+  .navbar-toggler {
+      margin-right: 0;
+  }
+
+  .nav-link {
+      font-size: 0.9rem;
+  }
+  #search-item{
+    width: auto;
+  }
+}
+
+
+/*footer*/
+
+/* Base styles */
+footer {
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 2rem 0;
+  font-size: 1rem;
+}
+
+footer h5 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+footer #link {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+footer #link:hover {
+  text-decoration: underline;
+}
+
+footer img {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+footer .col-md-3 div {
+  margin-bottom: 10px;
+}
+
+footer hr {
+  border-top: 1px solid #ddd;
+}
+
+footer .text-center {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  footer {
+      text-align: center;
+  }
+
+  footer .col-md-3 {
+      margin-bottom: 1.5rem;
+  }
+
+  footer img {
+      margin: 5px 0;
+  }
+
+  footer .text-center {
+      font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+      padding: 1.5rem 0;
+  }
+
+  footer .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  footer .col-md-3 {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+  }
+
+  footer img {
+      margin: 5px 0;
+  }
+
+  footer #link {
+      font-size: 0.9rem;
+  }
+
+  footer .text-center {
+      font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  footer {
+      padding: 1rem 0;
+  }
+
+  footer h5 {
+      font-size: 1.1rem;
+  }
+
+  footer img {
+      width: 50px;
+      height: 40px;
+  }
+
+  footer #link {
+      font-size: 0.85rem;
+  }
+
+  footer .text-center {
+      font-size: 0.75rem;
+  }
+}
+
+/*header home*/
+
+
+
+
+/*session first*/
+
+.form-control:focus,
+  .form-control:active {
+      border-color: white; /* or transparent, or any color you want when focused/active */
+      box-shadow: none; /* optional: remove box shadow if present */
+  }
+  .card {
+      width: 200px; /* Adjust the width as needed */
+    }
+    .card-img-top {
+      height: 120px; /* Adjust the height as needed */
+      object-fit: contain;
+    }
+    #card{
+      height: 320px;
+    }
+
+                             /*gadget session home*/
+
+
+
+
+
+
+
+
+
+
+
+ /* Default styles for larger screens */
+ .product-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+#div1{
+  height: 400px;
+  width: 750px;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+  float: right;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 20px;
+ 
+}
+.product-container .col {
+  flex: 1 1 16.66%; /* 6 columns on large screens */
+}
+#GADGETS{
+  width: 100%;
+  border: 1px solid gainsboro;
+   border-radius: 20px;
+}
+#div2 {
+padding: 20px;
+}
+
+.product-container .card {
+margin-bottom: 15px;
+}
+
+@media (min-width: 850px) and (max-width: 1500px) {
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Five columns per row */
+    gap: 5px; /* Gap of 5px between each card */
+  }
+
+  .product-card {
+    width: 100%;
+    height: auto;
+    padding: 15px; /* Adjust padding if needed */
+    box-sizing: border-box; /* Include padding in the element's width and height */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+    background-color: #fff; /* Optional card background color */
+  }
+  #div1{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    float: right;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
+   
+  }
+}
+
+
+@media(min-width:475) and (max-width: 778px) {
+  .product-container .col {
+    flex: 1 1 33.33%; /* 3 columns on small-medium screens */
+  }
+  #div1{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    float: right;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
+   
+  }
+}
+
+@media (max-width: 743px) {
+  .product-container .col {
+    flex: 1 1 50%; /* 2 columns on small screens */
+  }
+
+  /* Adjust button and text alignment for small screens */
+  p {
+    font-size: smaller;
+  }
+
+  button {
+    font-size: smaller;
+    padding: 5px 10px;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Six products per row */
+    gap: 20px;
+  }
+  .card {
+    width: 100%; /* Make the card take full width of the grid column */
+    height: auto; /* Adjust height based on content or set a fixed height */
+    padding: 5px; /* Optional: add padding inside the card */
+    box-sizing: border-box; /* Ensure padding is included in width and height */
+    border: 1px solid #ddd; /* Optional: add a border */
+    border-radius: 8px; /* Optional: round corners */
+    background-color: #fff; /* Optional: card background color */
+  }
+  #div1{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    float: right;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
+  }
+  .card-body {
+    padding: 1px; /* Less padding for smaller screens */
+  }
+  #eight img{
+    text-align: center;
+  }
+}
+
+@media (min-width:320px) and (max-width: 475px) {
+  .product-container .col {
+    flex: 1 1 100%; /* 1 column on extra small screens */
+  }
+
+  p {
+    font-size: small;
+  }
+
+  button {
+    font-size: smaller;
+    padding: 5px;
+  }
+  .card {
+    font-size: 10px; /* Smaller text size for mobile */
+  }
+
+  .card-img-top {
+    height: 100px; /* Adjust image size */
+  }
+
+  .card-body {
+    padding: 1px; /* Less padding for smaller screens */
+  }
+
+  .favorite-btn img {
+    width: 15px;
+    height: 15px; /* Smaller icons for mobile */
+  }
+  .row-cols-1 {
+    margin: 0;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Six products per row */
+    gap: 20px;
+  }
+  .card {
+    width: 100%; /* Make the card take full width of the grid column */
+    height: auto; /* Adjust height based on content or set a fixed height */
+    padding: 5px; /* Optional: add padding inside the card */
+    box-sizing: border-box; /* Ensure padding is included in width and height */
+    border: 1px solid rgb(112, 228, 112); /* Optional: add a border */
+    border-radius: 8px; /* Optional: round corners */
+    background-color: #fff; /* Optional: card background color */
+  }
+  #GADGETS{
+    width: 100%;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+  }
+  #div1{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    float: right;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
+   
+  }
+}
+
+/*user mobile*/
+/* General styles */
+
+@media only screen and (max-width: 320px) {
+  #catephone{
+    padding-left: 50px;
+    color: gray;
+  }
+  #brand{
+    float: right;
+    padding-right: 50px;
+    margin-top: -35px;
+  }
+}
+/* Mobile styles */
+@media only screen and (max-width: 600px) {
+  #cate {
+    display: none;
+  }
+
+  #cate .card-body {
+    padding: 10px;
+  }
+
+  #cate .card-title {
+    font-size: 16px;
+  }
+
+  #cate img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #cate a {
+    font-size: 14px;
+  }
+  #brandlist{
+    display: none;
+  }
+  #mobile1{
+    width: auto;
+  }
+  #catephone{
+    padding-left: 50px;
+    color: gray;
+  }
+  #brand{
+    float: right;
+    padding-right: 80px;
+    margin-top: -38px;
+  }
+  #mobile1{
+    height: 70px;
+    width: auto;
+    background-color: rgb(147, 214, 147);
+    margin-top: 10px;
+    margin-left: auto;
+    border-radius: 30px;
+  }
+  
+}
+
+/* Tablet styles */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  
+  #cate {
+    display: none;
+  }
+
+  #cate .card-body {
+    padding: 10px;
+  }
+
+  #cate .card-title {
+    font-size: 16px;
+  }
+
+  #cate img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #cate a {
+    font-size: 14px;
+  }
+  #brandlist{
+    display: none;
+  }
+  #mobile1{
+    width: auto;
+  }
+  #catephone{
+    padding-left: 180px;
+    color: gray;
+  }
+  #brand{
+    float: right;
+    padding-right: 180px;
+    margin-top: -38px;
+  }
+  #mobile1{
+    height: 70px;
+    width: auto;
+    background-color: rgb(147, 214, 147);
+    margin-top: 10px;
+    margin-left: auto;
+    border-radius: 30px;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 993px) {
+  #mobile{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    margin-left: 350px;
+    margin-top: -680px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 20px;
+    font-size: smaller;
+     
+  }
+  #mobile1{
+    height: 70px;
+    width: auto;
+    background-color: rgb(147, 214, 147);
+    margin-top: 25px;
+    margin-left: 25px;
+    border-radius: 30px;
+  }
+  #cate{
+    height: 300px;
+    width: auto;
+    border: 1px solid rgb(233, 230, 230);
+    border-radius: 20px;
+    margin-left: 80px;
+    margin-top:40px;
+  }
+  #watches{
+    margin-top: 30px;
+  }
+  #brand{
+    height: auto;
+    width: 230px;
+    border: 1px solid rgb(233, 230, 230);
+    border-radius: 20px;
+    margin-left: 80px;
+    margin-top:10px;
+  }
+  #catephone{
+    display: none;
+  }
+  #brandphone{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                         /*ads*/
+#ads {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  #ads {
+      width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  #ads {
+      width: 100%;
+      height: auto; /* Ensure image maintains aspect ratio */
+  }
+}
+
+@media (max-width: 768px) {
+  #ads {
+      width: 100%;
+      height: auto; /* Ensure image maintains aspect ratio */
+  }
+}
+
+@media (max-width: 576px) {
+  #ads {
+      width: 100%;
+      height: auto; /* Ensure image maintains aspect ratio */
+      max-height: 400px; /* Optional: adjust based on design */
+  }
+}
+
+/*eight session*/
+@media (max-width: 768px) {
+  #eight img {
+    max-width: 100%; /* Ensure images fit within the container */
+  }
+
+  #eight {
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center images */
+  }
+
+  .ps-4 {
+    padding-right: 0; /* Remove padding for smaller screens */
+  }
+}
+
+/* For screens smaller than 480px (e.g., very small mobile phones) */
+@media (max-width: 480px) {
+  #eight img {
+    width: 100%; /* Ensure images fit within the container */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+
+/*detail product*/
+#mobiledetail{
+  height: auto;
+  width: auto;
+  
+  margin-top: -10px;
+  
+   
+}
+#buy {
+  width: 200px;
+  height: 40px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+}
+#cod{
+  height: 150px;
+  width: 380px;
+  background-color: gainsboro;
+  border-radius: 10px;
+}
+.cod-item{
+  height: 70px;
+  width: 80px;
+  
+  font-size: xx-small;
+  margin-inline-start: 15px;
+  margin-top: 30px;
+  margin-right: 25px;
+  text-align: center;
+}
+.more-content {
+  display: none;
+}
+.show-more-button, .show-less-button {
+  cursor: pointer;
+  color: blue;
+  text-decoration: none;
+  float: right;
+}
+ /* image*/
+  #gallery{
+    height: auto;
+    width: 50px;
+    
+    margin-left: 10px;
+    margin-top: 40px;
+  }
+  .product-gallery {
+    display: flex;
+    align-items: center;
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-right: 20px;
+  }
+  
+  .thumbnails img {
+    width: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  
+  .thumbnails img:hover,
+  .thumbnails img.selected {
+    border-color: gray;
+  }
+  
+  .main-image img {
+    width: 300px;
+    max-width: 100%;
+  }
+
+  
+  #spec{
+    margin-right: 250px;
+    float: inline-start;
+  }
+  #spec-value{
+    margin-left: 5px; 
+    display: inline-block;
+  }
+  #admintext{
+    font-size: x-small;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #userordertext{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .align-middle{
+    font-size: x-small;
+  }
+  /*specification*/
+  .spec-container {
+    display: flex;
+    margin-bottom: 10px; /* Adjust the value as needed for space between pairs */
+    align-items: flex-start; /* Aligns items at the start of the flex container */
+    flex-wrap: wrap; /* Allows wrapping for long text */
+  }
+  .spec-label {
+    font-weight: bold;
+    width: 220px; /* Adjust the width as needed */
+    white-space: nowrap; /* Prevents the label from wrapping */
+  }
+  .spec-value {
+    flex: 1; /* Takes the remaining space */
+    overflow-wrap: break-word; /* Ensures long words break properly */
+    max-width: calc(100% - 270px); /* Ensures value stays in line, adjust based on label width */
+  }
+  @media (min-width: 1200px) {
+  /* image*/
+  #gallery{
+    height: auto;
+    width: 50px;
+    
+    margin-left: 10px;
+    margin-top: 40px;
+  }
+  .product-gallery {
+    display: flex;
+    align-items: center;
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-right: 20px;
+  }
+  
+  .thumbnails img {
+    width: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  
+  .thumbnails img:hover,
+  .thumbnails img.selected {
+    border-color: gray;
+  }
+  
+  .main-image img {
+    width: 300px;
+    max-width: 100%;
+  }
+  
+  /*image zoom */ 
+  
+  .product-gallery {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 20px;
+  }
+  
+  .thumbnails img {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .main-image {
+    position: relative;
+  }
+  
+  .main-image img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  #zoom-result {
+    border: 1px solid #d4d4d4;
+    width: 400px; /* Adjust size as needed    */
+    height: 400px;
+    margin-left: 10px;
+    background-repeat: no-repeat;
+    background-size: 800px 800px; /* Adjust size to control zoom level */
+    display: none; /* Hidden by default */
+  }
+  #assured{
+    margin-left: 10px;
+  }
+  
+  }
+  @media(min-width:320px) and (max-width: 480px) {
+    #buy {
+      width: 100px;
+      height: 40px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    #cod{
+      height: 150px;
+      width: auto;
+      background-color: gainsboro;
+      border-radius: 10px;
+    }
+    .cod-item {
+      height: 70px;
+      width: 60px;
+      font-size: xx-small;
+      margin-inline-start: 15px;
+      margin-top: 30px;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+    .product-gallery {
+      display: flex;
+      align-items: center;
+      margin-right: 25px;
+      border: none;
+    }
+    
+    .thumbnails {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-right: 20px;
+    }
+    
+    .thumbnails img {
+      width: 80px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    
+    .thumbnails img:hover,
+    .thumbnails img.selected {
+      border-color: gray;
+    }
+    
+    .main-image img {
+      width: 300px;
+      max-width: 100%;
+      padding-left: 25px;
+    }
+    #gallery{
+      
+      width: auto;
+      height: auto;
+      margin-left: 5px;
+    }
+    #spec{
+    margin-right: 250px;
+    float: inline-start;
+  }
+  #spec-value{
+    margin-left: 5px; 
+    display: inline-block;
+  }
+  #admintext{
+    font-size: x-small;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #userordertext{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .align-middle{
+    font-size: x-small;
+  }
+  /*specification*/
+  .spec-container {
+    display: flex;
+    margin-bottom: 10px; /* Adjust the value as needed for space between pairs */
+    align-items: flex-start; /* Aligns items at the start of the flex container */
+    flex-wrap: wrap; /* Allows wrapping for long text */
+  }
+  .spec-label {
+    font-weight: bold;
+    width: 200px; /* Adjust the width as needed */
+    white-space: nowrap; /* Prevents the label from wrapping */
+  }
+  .spec-value {
+    flex: 1; /* Takes the remaining space */
+    overflow-wrap: break-word; /* Ensures long words break properly */
+    max-width: calc(100% - 210px); /* Ensures value stays in line, adjust based on label width */
+  }
+  #assured{
+    margin-left: 15px;
+  }
+  }
+
+
+
+
+  /*cart*/
+
+@media (max-width: 742px) {
+  #mycart p {
+      font-size: auto;
+  }
+  #mycart{
+    width: auto;
+    height: auto;
+    border: 1px solid gainsboro;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  
+  #quantity h6, #tc {
+      font-size: 0.9rem;
+  }
+
+  #processcheckout {
+      font-size: 1rem;
+  }
+
+  #checkout {
+      padding: 10px;
+  }
+
+  .card-body {
+      padding: 10px;
+  }
+
+  .original-price {
+      font-size: 0.9rem;
+  }
+
+  .text-danger {
+      font-size: 0.8rem;
+  }
+
+  .img-fluid {
+      max-width: 120px;
+      height: auto;
+  }
+  #pd{
+    text-align: center;
+  }
+  #lapcart{
+    display: none;
+  }
+}
+
+/* Media Query for Laptops (Small screens) */
+@media (min-width: 742px) and (max-width: 1024px) {
+  #mycart{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    margin-left: 10px;
+    margin-right: 280px;
+    margin-top: 25px;
+    font-size: large;
+    
+  }
+  #checkout{
+    height: 320px;
+    width: auto;
+    border: 1px solid gainsboro;
+    float: right;
+    margin-top: -60px;
+    margin-right: 10px;
+    text-align: center;
+    position: sticky;
+  }
+  #processcheckout{
+    width:auto;
+    height: 45px;
+    border: none;
+    margin-left: 25px;
+    color: white;
+    border-radius: 10px;
+    background-color: #FF5F1F;
+  }
+  #quantity{
+    float: right;
+    margin-top: -120px;
+  }
+  #buyquantity{
+    float: right;
+    margin-top: 10px;
+  }
+  #mobilecart{
+    display: none;
+  }
+  #emptycart{
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+  margin-left: 250px;
+  }
+}
+
+/* Media Query for Large Screens (Desktops) */
+@media (min-width: 1024px) and (max-width:1200px) {
+  #mycart{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    margin-left: 10px;
+    margin-right: 280px;
+    margin-top: 25px;
+    font-size: large;
+    
+  }
+  #checkout{
+    height: 320px;
+    width: auto;
+    border: 1px solid gainsboro;
+    float: right;
+    margin-top: -60px;
+    margin-right: 10px;
+    text-align: center;
+    position: sticky;
+  }
+  #processcheckout{
+    width:auto;
+    height: 45px;
+    border: none;
+    margin-left: 25px;
+    color: white;
+    border-radius: 10px;
+    background-color: #FF5F1F;
+  }
+  #quantity{
+    float: right;
+    margin-top: -120px;
+  }
+  #buyquantity{
+    float: right;
+    margin-top: 10px;
+  }
+  #mobilecart{
+    display: none;
+  }
+  #emptycart{
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+    margin-left: 350px;
+    }
+}
+@media (min-width:1200px) and (max-width:2560px) {
+  #mycart{
+    height: auto;
+    width: auto;
+    border: 1px solid gainsboro;
+    margin-left: 200px;
+    margin-right: 600px;
+    margin-top: 25px;
+    font-size: large;
+    
+  }
+  #checkout{
+    height: 320px;
+    width: auto;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    float: right;
+    margin-top: -60px;
+    margin-right: 200px;
+    text-align: center;
+    position: sticky;
+  }
+  #processcheckout{
+    width:250px;
+    height: 45px;
+    border: none;
+    margin-left: 25px;
+    color: white;
+    border-radius: 10px;
+    background-color: #FF5F1F;
+  }
+  #quantity{
+    float: right;
+    margin-top: -120px;
+  }
+  #buyquantity{
+    float: right;
+    margin-top: 10px;
+  }
+  #mobilecart{
+    display: none;
+  }
+  #emptycart{
+    width: 250px;
+    height: 250px;
+    margin-left: 650px;
+    }
+}
+
+
+/*user profile*/
+@media (min-width:320px) and (max-width:769px) {
+  #lapuserprofile{
+    display: none;
+  }
+}
+@media (min-width:743px) and (max-width:769px) {
+  #profile{
+    height: 100px;
+    width: 250px;
+    border: 1px solid rgb(207, 65, 65);
+    border-radius: 5px;
+  }
+  #list{
+    height: 500px;
+    width: 250px;
+    margin: 50px;
+    background-color: white;
+    margin-left: 10px;
+  }
+  #border{
+    border-bottom: 1px solid black;
+  }
+  #text{
+    text-decoration: none;
+  }
+  #userprodile{
+    height: 500px;
+    width: auto;
+    border: 1px solid rgb(232, 226, 226);
+    margin-top: -530px;
+    margin-left: 280px;
+    margin-right: 10px;
+  }
+  #myorder{
+    height: auto;
+    width: auto;
+    border: 1px solid rgb(203, 201, 201);
+    margin-top: -1700px;
+    margin-left: 280px;
+    margin-right: 10px;
+  }
+  #address{
+    height: 400px;
+    width: 700px;
+    margin-top: -880px;
+    margin-left: 280px;
+  }
+  #myorder2{
+    height: 350px;
+    width: auto;
+    border: 1px solid gray;
+    margin-top: -1000px;
+    margin-left: 280px;
+    margin-right: 100px;
+    
+  }
+  .dropdown-toggle::after {
+    display: none; /* Hide the default dropdown arrow */
+  }
+  
+  /* Adjust padding if necessary */
+  .dropdown-toggle {
+    padding-right: 1rem; /* Adjust as needed */
+  }
+  #collapseExample.card-body {
+    width: 400px;/* Your desired width */
+  }
+  #collapseExample button{
+    margin-top: -10px;
+  }
+  
+  #collapseExample {
+    height: 410px;
+    width: auto;
+    margin-right: 10px;
+  }
+  #collapseExample .card-body {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  #addressoption li{
+    height: 100%;
+    width: 280px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 100px;
+    border-radius: 10px;
+    list-style-type: none;
+    text-align: left;
+    padding-left: 25px;
+    
+  }
+  #addressoption a{
+    text-decoration: none;
+    float: right;
+    padding-right: 20px;
+  }
+  #addressoption2{
+    height: 100%;
+    width: 700px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+  #mobileuserprofile{
+    display: none;
+  }
+}
+@media (min-width:769px) and (max-width:900px) {
+  #profile{
+    height: 100px;
+    width: 250px;
+    border: 1px solid rgb(207, 65, 65);
+    border-radius: 5px;
+  }
+  #list{
+    height: 500px;
+    width: 250px;
+    margin: 50px;
+    background-color: white;
+    margin-left: 10px;
+  }
+  #border{
+    border-bottom: 1px solid black;
+  }
+  #text{
+    text-decoration: none;
+  }
+  #userprodile{
+    height: 500px;
+    width: auto;
+    border: 1px solid rgb(232, 226, 226);
+    margin-top: -530px;
+    margin-left: 280px;
+    margin-right: 10px;
+  }
+  #myorder{
+    height: auto;
+    width: auto;
+    border: 1px solid rgb(203, 201, 201);
+    margin-top: -960px;
+    margin-left: 280px;
+    margin-right: 10px;
+  }
+  #address{
+    height: 400px;
+    width: 700px;
+    margin-top: -880px;
+    margin-left: 280px;
+  }
+  #myorder2{
+    height: 350px;
+    width: auto;
+    border: 1px solid gray;
+    margin-top: -1000px;
+    margin-left: 280px;
+    margin-right: 100px;
+    
+  }
+  .dropdown-toggle::after {
+    display: none; /* Hide the default dropdown arrow */
+    
+  }
+  
+  /* Adjust padding if necessary */
+  .dropdown-toggle {
+    padding-right: 1rem; /* Adjust as needed */
+  }
+  #collapseExample.card-body {
+    width: 400px/* Your desired width */
+  }
+  #collapseExample button{
+    margin-top: -80px;
+  }
+  
+  #collapseExample .card-body {
+    height: 400px;
+    width: auto;
+    margin-right: 10px;
+    
+  }
+  #addressoption li{
+    height: 100%;
+    width: 325px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 100px;
+    border-radius: 10px;
+    list-style-type: none;
+    text-align: left;
+    padding-left: 25px;
+    
+  }
+  #addressoption a{
+    text-decoration: none;
+    float: right;
+    padding-right: 10px;
+  }
+  #addressoption2{
+    height: 100%;
+    width: 700px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  #mobileuserprofile{
+    display: none;
+  }
+}
+@media (min-width:900px) and (max-width:1250px) {
+  #profile{
+    height: 100px;
+    width: 250px;
+    border: 1px solid rgb(207, 65, 65);
+    border-radius: 5px;
+  }
+  #list{
+    height: 500px;
+    width: 250px;
+    margin: 50px;
+    background-color: white;
+    margin-left: 10px;
+  }
+  #border{
+    border-bottom: 1px solid black;
+  }
+  #text{
+    text-decoration: none;
+  }
+  #userprodile{
+    height: 500px;
+    width: auto;
+    border: 1px solid rgb(232, 226, 226);
+    margin-top: -530px;
+    margin-left: 280px;
+    margin-right: 10px;
+  }
+  #myorder{
+    height: auto;
+    width: auto;
+    border: 1px solid rgb(203, 201, 201);
+    margin-top: -980px;
+    margin-left: 280px;
+    margin-right: 100px;
+  }
+  #address{
+    height: 400px;
+    width: 700px;
+    margin-top: -880px;
+    margin-left: 280px;
+  }
+  #myorder2{
+    height: 350px;
+    width: auto;
+    border: 1px solid gray;
+    margin-top: -960px;
+    margin-left: 280px;
+    margin-right: 100px;
+    
+  }
+  .dropdown-toggle::after {
+    display: none; /* Hide the default dropdown arrow */
+    
+  }
+  
+  /* Adjust padding if necessary */
+  .dropdown-toggle {
+    padding-right: 1rem; /* Adjust as needed */
+  }
+  #collapseExample.card-body {
+    width: 400px/* Your desired width */
+  }
+  #collapseExample button{
+    margin-top: -80px;
+  }
+  
+  #collapseExample .card-body {
+    height: 400px;
+    width: auto;
+    margin-right: 10px;
+    
+  }
+  #addressoption li{
+    height: 100%;
+    width: 400px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 100px;
+    border-radius: 10px;
+    list-style-type: none;
+    text-align: left;
+    padding-left: 25px;
+    
+  }
+  #addressoption a{
+    text-decoration: none;
+    float: right;
+    padding-right: 10px;
+  }
+  #addressoption2{
+    height: 100%;
+    width: 700px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  #mobileuserprofile{
+    display: none;
+  }
+}
+@media (min-width:1250px) and (max-width:2560px) {
+#profile{
+  height: 100px;
+  width: 250px;
+  border: 1px solid rgb(207, 65, 65);
+  border-radius: 5px;
+}
+#list{
+  height: 500px;
+  width: 250px;
+  margin: 50px;
+  background-color: white;
+  margin-left: 200px;
+}
+#border{
+  border-bottom: 1px solid black;
+}
+#text{
+  text-decoration: none;
+}
+#userprodile{
+  height: 500px;
+  width: 750px;
+  border: 1px solid rgb(232, 226, 226);
+  margin-top: -530px;
+  margin-left: 500px;
+}
+#myorder{
+  height: auto;
+  width: 750px;
+  border: 1px solid rgb(203, 201, 201);
+  margin-top: -960px;
+  margin-left: 500px;
+}
+#address{
+  height: 400px;
+  width: 700px;
+  margin-top: -880px;
+  margin-left: 500px;
+}
+#myorder2{
+  height: 350px;
+  width: 700px;
+  border: 1px solid gray;
+  margin-top: -1000px;
+  margin-left: 500px;
+  
+}
+.dropdown-toggle::after {
+  display: none; /* Hide the default dropdown arrow */
+  
+}
+
+/* Adjust padding if necessary */
+.dropdown-toggle {
+  padding-right: 1rem; /* Adjust as needed */
+}
+#collapseExample.card-body {
+  width: 400px/* Your desired width */
+}
+
+#collapseExample .card-body {
+  height: 400px;
+  width: 700px;
+  
+}
+#addressoption li{
+  height: 100%;
+  width: 400px;
+  border: 2px solid black;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 10px;
+  list-style-type: none;
+  text-align: left;
+  padding-left: 25px;
+  
+}
+#addressoption a{
+  text-decoration: none;
+  float: right;
+  padding-right: 10px;
+}
+#addressoption2{
+  height: 100%;
+  width: 700px;
+  border: 2px solid black;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+#mobileuserprofile{
+  display: none;
+}
+}
+
+
+
+@media (min-width:1250px) and (max-width:2560px) {
+/*buy*/
+#loguser{
+  height: auto;
+  width: 650px;
+  border: 1px solid gainsboro;
+  margin-top: -450px;
+  margin-left: 120px;
+  border-radius: 5px;
+}
+#loguserbutton{
+  margin-top: 25px;
+  margin-left: 30px;
+  background-color: rgba(18, 18, 167, 0.951);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+#logtext{
+  margin-left: 75px;
+  margin-top: -30px;
+  color: rgb(191, 187, 187);
+}
+#logname{
+  margin-left: 75px;
+  margin-top: -10px;
+  color: rgb(56, 50, 50);
+}
+#order{
+  height: auto;
+  width: 650px;
+  border: 1px solid gainsboro;
+  margin-top: 25px;
+  margin-left: 120px;
+  border-radius: 5px;
+}
+#logimg{
+  margin-left: 100px;
+  margin-top: 10px;
+  
+}
+#proname{
+  font-size: medium;
+}
+#mybuy{
+    height: auto;
+    width: 600px;
+    border: none;
+    margin-left: 10px;
+    font-size: large;
+}
+#qty{
+  float: right;
+  margin-right: 40px;
+  margin-top: -50px;
+}
+#buyaddress{
+  width: 300px;
+  height: 50px;
+  margin-left: 850px;
+  margin-bottom: 50px;
+  text-align: center;
+  background-color: rgb(222, 68, 12);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+#Addressbuy{
+  width: 300px;
+  height: auto;
+  margin-left: 850px;
+  margin-bottom: 50px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+#paymentmode{
+  width: 300px;
+  height: auto;
+  margin-left: 850px;
+  margin-top: -40px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  text-align: center;
+}
+#paymenttext{
+  margin-top: 20px;
+  color: rgb(109, 104, 104);
+  font-weight: bold;
+}
+.paybutton {
+  width: 250px;
+  height: 40px;
+  margin-bottom: 20px;
+  background-color: rgb(72, 157, 210);
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.paybutton.selected {
+  background-color: #0d2946; /* Change to the color you want for selected buttons */
+  color: white;
+  border: none;
+}
+.proceed{
+  width: 250px;
+  height: 40px;
+  margin-bottom: 20px;
+  background-color:orange;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+}
+#mobilebuy{
+  display: none;
+}
+}
+@media (min-width:320px) and (max-width:769px) {
+  #laptopbuy{
+    display: none;
+  }
+}

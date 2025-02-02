@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "nodemon": "nodemon src/index.js",
-    "start": "node index.js",
+    "start": "node src/index.js"
     "build": "echo 'No build step for this project'"
   },
   "author": "jio",

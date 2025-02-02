@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "nodemon": "nodemon src/index.js",
-    "start": "node server.js",
   },
   "author": "jio",
   "license": "ISC",

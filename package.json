@@ -2,9 +2,11 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "nodemon": "nodemon src/index.js",
+    "start": "node index.js",
+    "build": "echo 'No build step for this project'"
   },
   "author": "jio",
   "license": "ISC",

@@ -254,7 +254,7 @@ router.post('/unblock/:id', async (req, res) => {
              id: user.id
          };
          const token = jwt.sign(payload, secret, { expiresIn: '5min' });
-         const resetLink = `http://localhost:3011/reset-password/${user.id}/${token}`;
+         const resetLink = `https://shopymall.onrender.com/reset-password/${user.id}/${token}`;
  
          // Send password reset link via email
          const transporter = nodemailer.createTransport({

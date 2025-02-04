@@ -2,7 +2,9 @@ const express = require("express");
 const session = require("express-session");
 const Product = require("../src/configure_product"); // Adjust the path as necessary
 const Address = require("../src/address-configure")
-const multer = require("multer");
+const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../src/config/cloudinary');
 const bcrypt = require("bcrypt");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
@@ -29,13 +31,13 @@ router.use(
   })
 );
 
-// Multer configuration for file upload
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
+// Configure Cloudinary storage for Multer
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'products', // Optional: You can specify a folder in Cloudinary
+    format: async (req, file) => 'png', // supports promises as well
+    public_id: (req, file) => `product-${Date.now()}`,
   },
 });
 
@@ -47,7 +49,6 @@ const upload = multer({ storage: storage }).fields([
   { name: 'imagePath5', maxCount: 1 },
   { name: 'imagePath6', maxCount: 1 }
 ]);
-
 // Get all products for the admin product page
 router.get("/admin_product", async (req, res) => {
   try {
@@ -715,12 +716,12 @@ router.post("/add_product", upload, async (req, res) => {
       model: req.body.model,
       price: req.body.price,
       discountPercentage: req.body.discountPercentage,
-      imagePath1: req.files.imagePath1 ? req.files.imagePath1[0].filename : null,
-      imagePath2: req.files.imagePath2 ? req.files.imagePath2[0].filename : null,
-      imagePath3: req.files.imagePath3 ? req.files.imagePath3[0].filename : null,
-      imagePath4: req.files.imagePath4 ? req.files.imagePath4[0].filename : null,
-      imagePath5: req.files.imagePath5 ? req.files.imagePath5[0].filename : null,
-      imagePath6: req.files.imagePath6 ? req.files.imagePath6[0].filename : null,
+      imagePath1: req.files.imagePath1 ? req.files.imagePath1[0].path : null,
+      imagePath2: req.files.imagePath2 ? req.files.imagePath2[0].path : null,
+      imagePath3: req.files.imagePath3 ? req.files.imagePath3[0].path : null,
+      imagePath4: req.files.imagePath4 ? req.files.imagePath4[0].path : null,
+      imagePath5: req.files.imagePath5 ? req.files.imagePath5[0].path : null,
+      imagePath6: req.files.imagePath6 ? req.files.imagePath6[0].path : null,
       category: req.body.category,
       brand: req.body.brand,
       description: req.body.description,
@@ -1181,12 +1182,13 @@ router.post("/update_product/:id", upload, async (req, res) => {
       model: req.body.model,
       price: req.body.price,
       discountPercentage: req.body.discountPercentage,
-      imagePath1: req.files.imagePath1 ? req.files.imagePath1[0].filename : req.body.ImagePath1,
-      imagePath2: req.files.imagePath2 ? req.files.imagePath2[0].filename : req.body.ImagePath2,
-      imagePath3: req.files.imagePath3 ? req.files.imagePath3[0].filename : req.body.ImagePath3,
-      imagePath4: req.files.imagePath4 ? req.files.imagePath4[0].filename : req.body.ImagePath4,
-      imagePath5: req.files.imagePath5 ? req.files.imagePath5[0].filename : req.body.ImagePath5,
-      imagePath6: req.files.imagePath6 ? req.files.imagePath6[0].filename : req.body.ImagePath6,
+      imagePath1: req.files.imagePath1 ? req.files.imagePath1[0].path : req.body.imagePath1,
+      imagePath2: req.files.imagePath2 ? req.files.imagePath2[0].path : req.body.imagePath2,
+      imagePath3: req.files.imagePath3 ? req.files.imagePath3[0].path : req.body.imagePath3,
+      imagePath4: req.files.imagePath4 ? req.files.imagePath4[0].path : req.body.imagePath4,
+      imagePath5: req.files.imagePath5 ? req.files.imagePath5[0].path : req.body.imagePath5,
+      imagePath6: req.files.imagePath6 ? req.files.imagePath6[0].path : req.body.imagePath6,
+
       
       category: req.body.category,
       brand: req.body.brand,

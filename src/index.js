@@ -20,7 +20,7 @@ const passport = require('passport');
 
 const app = express()
 
-require('./config/passport')(passport);
+require('../src/config/passport')(passport);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
